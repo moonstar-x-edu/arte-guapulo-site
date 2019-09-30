@@ -1,11 +1,10 @@
 import React from 'react';
-import './main.scss';
+import Router from '../router';
+import '../../main.scss';
 
 const App = () => {
   return (
-    <div>
-      App Component!
-    </div>
+    <Router />
   );
 };
 
