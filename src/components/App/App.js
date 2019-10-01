@@ -1,9 +1,10 @@
-import React from 'react';
+import React  from 'react';
 import Router from '../router';
-import '../../main.scss';
+import '../../styles/main.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
-  return (
+  return(
     <Router />
   );
 };
