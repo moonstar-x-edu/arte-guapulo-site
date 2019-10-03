@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { t } from '../../../i18n';
 
-const Text = ({ phrase, app: { locale } }, dispatch, ...props) => {
+const Text = ({ phrase }) => {
   return (
-    <span {...props}>
+    <span>
       {t(phrase)}
     </span>
   );
