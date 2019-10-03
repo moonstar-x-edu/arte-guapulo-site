@@ -8,8 +8,10 @@ const Gallery = () => {
       {
         exampleResponse.map((dataObject) => (
           <ImageCard
+            key={dataObject.id}
+            piece={dataObject.id}
             imageURL={dataObject.image}
-            social={dataObject.social}
+            authors={dataObject.authors}
             coordinates={dataObject.coordinates}
             tags={dataObject.tags}
           />

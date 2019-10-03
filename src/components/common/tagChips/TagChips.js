@@ -6,8 +6,8 @@ const TagChips = ({ tags }) => {
   return (
     <Fragment>
       {
-        tags.map((tag) => (
-          <Badge variant="primary">#{tag}</Badge>
+        tags.map((tag, index) => (
+          <Badge key={index} variant="primary">#{tag}</Badge>
         ))
       }
     </Fragment>
