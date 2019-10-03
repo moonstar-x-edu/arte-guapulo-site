@@ -1,7 +1,9 @@
 import ImageCard from './ImageCard';
+import ImageOverlay from './ImageOverlay';
 
 export {
-  ImageCard
+  ImageCard,
+  ImageOverlay
 };
 
 export default ImageCard;

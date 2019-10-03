@@ -29,7 +29,7 @@ class ImageCard extends Component {
 
   render() {
     const { overlayVisible } = this.state;
-    const { imageURL, coordinates, social, tags } = this.props;
+    const { piece, imageURL, coordinates, authors, tags } = this.props;
 
     return (
       <Card className="image-card bg-dark text-white d-flex w-50 h-50"
@@ -42,8 +42,9 @@ class ImageCard extends Component {
         />
         <ImageOverlay
           visible={overlayVisible}
+          piece={piece}
           coordinates={coordinates}
-          social={social}
+          authors={authors}
           tags={tags}
         />
       </Card>
@@ -52,16 +53,17 @@ class ImageCard extends Component {
 }
 
 ImageCard.propTypes = {
+  piece: PropTypes.string.isRequired,
   imageURL: PropTypes.string.isRequired,
   coordinates: PropTypes.exact({
     latitude: PropTypes.string.isRequired,
     longitude: PropTypes.string.isRequired
   }).isRequired,
-  social: PropTypes.exact({
+  authors: PropTypes.arrayOf(PropTypes.exact({
     facebook: PropTypes.string,
     twitter: PropTypes.string,
     instagram: PropTypes.string
-  }).isRequired,
+  })).isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 

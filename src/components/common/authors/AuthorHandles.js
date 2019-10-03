@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookSquare, faTwitterSquare, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { Card } from 'react-bootstrap';
 
-const ArtistHandles = ({ social }) => {
+const AuthorHandles = ({ social }) => {
   const icon = {
     facebook: faFacebookSquare,
     twitter: faTwitterSquare,
@@ -14,11 +14,11 @@ const ArtistHandles = ({ social }) => {
   return (
     <Fragment>
       {
-        Object.keys(social).map((type) => {
+        Object.keys(social).map((type, index) => {
           const handle = social[type];
 
           return handle ? (
-            <Card.Text>
+            <Card.Text key={index}>
               <FontAwesomeIcon icon={icon[type]} /> {handle}
             </Card.Text>
           ) : null;
@@ -28,7 +28,7 @@ const ArtistHandles = ({ social }) => {
   );
 };
 
-ArtistHandles.propTypes = {
+AuthorHandles.propTypes = {
   social: PropTypes.exact({
     facebook: PropTypes.string,
     twitter: PropTypes.string,
@@ -36,4 +36,4 @@ ArtistHandles.propTypes = {
   }).isRequired
 };
 
-export default ArtistHandles;
+export default AuthorHandles;
