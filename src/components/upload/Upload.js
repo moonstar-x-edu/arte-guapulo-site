@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../firebase';
+import ProgressBar from '../common/progressBar';
 
 class Upload extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class Upload extends Component {
 
     this.state = {
       image: '',
-      progress: null,
+      progress: 0,
       imageURL: '',
       error: null
     };
@@ -53,7 +54,7 @@ class Upload extends Component {
 
     this.setState({
       error,
-      progress: null,
+      progress: 0,
       image: null
     });
   }
@@ -63,7 +64,7 @@ class Upload extends Component {
 
     this.setState({
       imageURL,
-      progress: null,
+      progress: 0,
       image: null
     });
   }
@@ -74,8 +75,8 @@ class Upload extends Component {
     return (
       <div>
         {
-          progress &&
-            <span>PROGRESS: {progress * 100}%</span>
+          progress > 0 &&
+            <ProgressBar progress={Math.ceil(progress * 100)} />
         }
         {
           error &&
