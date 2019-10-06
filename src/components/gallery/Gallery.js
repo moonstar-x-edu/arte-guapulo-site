@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Actions from '../../redux/actions'
 import ImageCard from  '../common/imageCard';
 import LoadingSpinner from '../common/loadingSpinner';
+import { ErrorBox, WarningBox } from '../common/errorBox';
 
 const { getGallery } = Actions;
 
@@ -22,18 +23,13 @@ class Gallery extends Component {
 
     if (error) {
       return (
-        <span>
-          ERROR!
-          {error}
-        </span>
+        <ErrorBox heading="Gallery.error.heading" content="Gallery.error.message" />
       );
     }
 
     if (data.length < 1) {
       return (
-        <span>
-          EMPTY!
-        </span>
+        <WarningBox heading="Gallery.warning.heading" content="Gallery.warning.message" />
       );
     }
 
