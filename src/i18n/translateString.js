@@ -7,7 +7,12 @@ const getTranslatedPhraseForKey = (key) => {
 
   const locale = strings[reduxLocale] ? reduxLocale : 'en';
 
-  return strings[locale][key];
+  const translatedPhrase = strings[locale][key];
+  if (!translatedPhrase) {
+    throw new Error(`${key} does not exist in strings list!`);
+  }
+
+  return translatedPhrase;
 };
 
 export default getTranslatedPhraseForKey;

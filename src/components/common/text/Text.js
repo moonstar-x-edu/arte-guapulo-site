@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { t } from '../../../i18n';
 
 const Text = ({ phrase }) => {
+  if (!phrase) {
+    return null;
+  }
+
   return (
-    <span>
+    <Fragment>
       {t(phrase)}
-    </span>
+    </Fragment>
   );
 };
 
 Text.propTypes = {
-  phrase: PropTypes.string.isRequired
+  phrase: PropTypes.string
 };
 
 const mapStateToProps = (state) => {
