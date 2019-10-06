@@ -1,6 +1,6 @@
 import React from 'react';
-import LanguageSwitcher from '../common/languageSwitcher/LanguageSwitcher';
-import Text from '../common/text/Text';
+import LanguageSwitcher from '../common/languageSwitcher';
+import Text from '../common/text';
 
 const Home = () => {
   return (
