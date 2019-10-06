@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../firebase';
 import ProgressBar from '../common/progressBar';
+import { ErrorBox } from '../common/errorBox';
 
 class Upload extends Component {
   constructor(props) {
@@ -80,7 +81,7 @@ class Upload extends Component {
         }
         {
           error &&
-            <span>ERROR: {error}</span>
+            <ErrorBox heading="Upload.error.heading" content="Upload.error.message" />
         }
         <form>
           <input ref="imageUpload" type="file" onChange={this.handleFileInput} />

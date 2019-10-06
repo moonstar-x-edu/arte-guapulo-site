@@ -16,9 +16,15 @@ const GALLERY = {
   'Gallery.warning.message': 'No hay piezas de galería que mostrar. Si ve este mensaje, contacte al administrador de la página.'
 };
 
+const UPLOAD = {
+  'Upload.error.heading': '¡Ups! Algo sucedió al subir la imagen al servidor...',
+  'Upload.error.message': 'No fue posible subir la imagen al servidor, intentalo más tarde.'
+};
+
 const phrases = {
   ...NAVBAR,
-  ...GALLERY
+  ...GALLERY,
+  ...UPLOAD
 };
 
 export default phrases;

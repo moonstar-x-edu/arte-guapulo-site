@@ -16,9 +16,15 @@ const GALLERY = {
   'Gallery.warning.message': 'No gallery pieces are available to show. If you see this message, contact the website administrator.'
 };
 
+const UPLOAD = {
+  'Upload.error.heading': 'Oops! Something went wrong when trying to upload the image...',
+  'Upload.error.message': "I couldn't upload the image to the server. Try again later."
+};
+
 const phrases = {
   ...NAVBAR,
-  ...GALLERY
+  ...GALLERY,
+  ...UPLOAD
 };
 
 export default phrases;
