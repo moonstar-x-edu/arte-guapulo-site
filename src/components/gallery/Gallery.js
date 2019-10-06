@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ImageCard from  '../common/imageCard';
 import Actions from '../../redux/actions'
+import ImageCard from  '../common/imageCard';
+import LoadingSpinner from '../common/loadingSpinner';
 
 const { getGallery } = Actions;
 
@@ -15,9 +16,7 @@ class Gallery extends Component {
 
     if (loading) {
       return (
-        <span>
-          LOADING!
-        </span>
+        <LoadingSpinner loading={loading} phrase="Gallery.loading" />
       );
     }
 

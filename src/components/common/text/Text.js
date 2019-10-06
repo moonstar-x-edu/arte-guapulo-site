@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 import { t } from '../../../i18n';
 
 const Text = ({ phrase }) => {
+  if (!phrase) {
+    return null;
+  }
+
   return (
     <span>
       {t(phrase)}
@@ -12,7 +16,7 @@ const Text = ({ phrase }) => {
 };
 
 Text.propTypes = {
-  phrase: PropTypes.string.isRequired
+  phrase: PropTypes.string
 };
 
 const mapStateToProps = (state) => {

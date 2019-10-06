@@ -8,7 +8,8 @@ const GALLERY = {
   'Gallery.card.location': 'Location',
   'Gallery.card.author': 'Author',
   'Gallery.card.authors': 'Authors',
-  'Gallery.card.tags': 'Tags'
+  'Gallery.card.tags': 'Tags',
+  'Gallery.loading': 'Loading images...'
 };
 
 const phrases = {
