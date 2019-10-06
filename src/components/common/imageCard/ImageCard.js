@@ -56,8 +56,8 @@ ImageCard.propTypes = {
   piece: PropTypes.string.isRequired,
   imageURL: PropTypes.string.isRequired,
   coordinates: PropTypes.exact({
-    latitude: PropTypes.string.isRequired,
-    longitude: PropTypes.string.isRequired
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired
   }).isRequired,
   authors: PropTypes.arrayOf(PropTypes.exact({
     facebook: PropTypes.string,

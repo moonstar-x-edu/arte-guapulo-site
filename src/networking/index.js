@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const endpoint = (path) => {
-  return process.env.API_URL + path;
+  return process.env.REACT_APP_API_URL + path;
 };
 
 const getGalleryRequest = () => {

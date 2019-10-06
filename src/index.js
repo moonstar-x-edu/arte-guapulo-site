@@ -1,10 +1,8 @@
+import 'dotenv/config';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app';
-import dotEnv from 'dotenv';
 import * as serviceWorker from './serviceWorker';
-
-dotEnv.config();
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
