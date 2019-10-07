@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withFirebase } from '../../firebase';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import StatusMessages from './StatusMessages';
+import Geolocation from '../common/geolocation';
 
 class Upload extends Component {
   constructor(props) {
@@ -13,6 +14,12 @@ class Upload extends Component {
       error: null,
       form: {
         imageURL: '',
+        coordinates: {
+          latitude: null,
+          longitude: null
+        },
+        authors: [],
+        tags: []
       }
     };
 
@@ -21,6 +28,7 @@ class Upload extends Component {
     this.handleUploadProgress = this.handleUploadProgress.bind(this);
     this.handleUploadError = this.handleUploadError.bind(this);
     this.handleUploadComplete = this.handleUploadComplete.bind(this);
+    this.handleLocation = this.handleLocation.bind(this);
   }
 
   handleFileInput(event) {
@@ -79,13 +87,26 @@ class Upload extends Component {
     });
   }
 
+  handleLocation(coords) {
+    this.setState({
+      form: {
+        ...this.state.form,
+        coordinates: {
+          latitude: coords.latitude,
+          longitude: coords.longitude
+        }
+      }
+    });
+  }
+
   render() {
-    const { error, progress, form: { imageURL } } = this.state;
+    const { error, progress, form: { imageURL, coordinates: { latitude, longitude } } } = this.state;
 
     return (
       <div>
         <StatusMessages progress={progress} imageURL={imageURL} error={error} />
         <Form>
+
           <Form.Group as={Row} controlId="formImage">
             <Form.Label column sm={2}>
               IMAGE
@@ -94,6 +115,17 @@ class Upload extends Component {
               <Form.Control ref="imageUpload" type="file" onChange={this.handleFileInput} />
             </Col>
           </Form.Group>
+
+          <Form.Group as={Row} controlId="formLocation">
+            <Form.Label column sm={2}>
+              LOCATION
+            </Form.Label>
+            <Col sm={10}>
+              <Geolocation onGetLocation={this.handleLocation} />
+            </Col>
+            <span>Lat: {latitude || 'N/A'} - Lon: {longitude || 'N/A'}</span>
+          </Form.Group>
+
           <Form.Group as={Row}>
             <Col sm={{ span: 10, offset: 2 }}>
               <Button type="submit" onClick={this.handleUpload}>
@@ -101,6 +133,7 @@ class Upload extends Component {
               </Button>
             </Col>
           </Form.Group>
+
         </Form>
       </div>
     );
