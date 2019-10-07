@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../firebase';
-import ProgressBar from '../common/progressBar';
-import { ErrorBox, SuccessBox } from '../common/alertBox';
+import { Form, Row, Col, Button } from 'react-bootstrap';
+import StatusMessages from './StatusMessages';
 
 class Upload extends Component {
   constructor(props) {
@@ -10,8 +10,10 @@ class Upload extends Component {
     this.state = {
       image: '',
       progress: 0,
-      imageURL: '',
-      error: null
+      error: null,
+      form: {
+        imageURL: '',
+      }
     };
 
     this.handleFileInput = this.handleFileInput.bind(this);
@@ -64,38 +66,42 @@ class Upload extends Component {
     this.refs.imageUpload.value = '';
 
     this.setState({
-      imageURL,
-      image: null
+      image: null,
+      form: {
+        imageURL
+      }
     }, () => {
       setTimeout(() => {
         this.setState({
           progress: 0
         });
-      }, 3000);
+      }, 2000);
     });
   }
 
   render() {
-    const { error, progress, imageURL } = this.state;
+    const { error, progress, form: { imageURL } } = this.state;
 
     return (
       <div>
-        {
-          progress > 0 &&
-            <ProgressBar progress={Math.ceil(progress * 100)} />
-        }
-        {
-          imageURL &&
-            <SuccessBox content="Upload.success.message" />
-        }
-        {
-          error &&
-            <ErrorBox heading="Upload.error.heading" content="Upload.error.message" />
-        }
-        <form>
-          <input ref="imageUpload" type="file" onChange={this.handleFileInput} />
-          <button onClick={this.handleUpload}>Upload!</button>
-        </form>
+        <StatusMessages progress={progress} imageURL={imageURL} error={error} />
+        <Form>
+          <Form.Group as={Row} controlId="formImage">
+            <Form.Label column sm={2}>
+              IMAGE
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Control ref="imageUpload" type="file" onChange={this.handleFileInput} />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row}>
+            <Col sm={{ span: 10, offset: 2 }}>
+              <Button type="submit" onClick={this.handleUpload}>
+                SUBMIT
+              </Button>
+            </Col>
+          </Form.Group>
+        </Form>
       </div>
     );
   }
