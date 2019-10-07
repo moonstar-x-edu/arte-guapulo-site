@@ -18,7 +18,8 @@ const GALLERY = {
 
 const UPLOAD = {
   'Upload.error.heading': '¡Ups! Algo sucedió al subir la imagen al servidor...',
-  'Upload.error.message': 'No fue posible subir la imagen al servidor, intentalo más tarde.'
+  'Upload.error.message': 'No fue posible subir la imagen al servidor, intentalo más tarde.',
+  'Upload.success.message': '¡La imagen ha sido subida exitosamente!'
 };
 
 const phrases = {

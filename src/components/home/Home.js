@@ -2,7 +2,7 @@ import React from 'react';
 import LanguageSwitcher from '../common/languageSwitcher';
 import Text from '../common/text';
 import LoadingSpinner from '../common/loadingSpinner';
-import { ErrorBox, WarningBox } from '../common/errorBox';
+import { ErrorBox, WarningBox } from '../common/alertBox';
 import ProgressBar from '../common/progressBar';
 
 const Home = () => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../firebase';
 import ProgressBar from '../common/progressBar';
-import { ErrorBox } from '../common/errorBox';
+import { ErrorBox, SuccessBox } from '../common/alertBox';
 
 class Upload extends Component {
   constructor(props) {
@@ -65,19 +65,28 @@ class Upload extends Component {
 
     this.setState({
       imageURL,
-      progress: 0,
       image: null
+    }, () => {
+      setTimeout(() => {
+        this.setState({
+          progress: 0
+        });
+      }, 3000);
     });
   }
 
   render() {
-    const { error, progress } = this.state;
+    const { error, progress, imageURL } = this.state;
 
     return (
       <div>
         {
           progress > 0 &&
             <ProgressBar progress={Math.ceil(progress * 100)} />
+        }
+        {
+          imageURL &&
+            <SuccessBox content="Upload.success.message" />
         }
         {
           error &&

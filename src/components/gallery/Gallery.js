@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Actions from '../../redux/actions'
 import ImageCard from  '../common/imageCard';
 import LoadingSpinner from '../common/loadingSpinner';
-import { ErrorBox, WarningBox } from '../common/errorBox';
+import { ErrorBox, WarningBox } from '../common/alertBox';
 
 const { getGallery } = Actions;
 
