@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withFirebase } from '../../firebase';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import StatusMessages from './StatusMessages';
-import Geolocation from '../common/geolocation';
+import { Geolocation, AuthorForm } from '../common/form';
 
 class Upload extends Component {
   constructor(props) {
@@ -28,8 +28,14 @@ class Upload extends Component {
     this.handleUploadProgress = this.handleUploadProgress.bind(this);
     this.handleUploadError = this.handleUploadError.bind(this);
     this.handleUploadComplete = this.handleUploadComplete.bind(this);
+
     this.handleLocation = this.handleLocation.bind(this);
+
+    this.handleAddAuthor = this.handleAddAuthor.bind(this);
+    this.handleRemoveAuthor = this.handleRemoveAuthor.bind(this);
+    this.handleAuthorChange = this.handleAuthorChange.bind(this);
   }
+
 
   handleFileInput(event) {
     const [image] = event.target.files;
@@ -99,8 +105,59 @@ class Upload extends Component {
     });
   }
 
+  handleAddAuthor() {
+    const { form } = this.state;
+
+    const newAuthors = [
+      ...form.authors,
+      {
+        facebook: '',
+        twitter: '',
+        instagram: ''
+      }
+    ];
+
+    this.setState({
+      form: {
+        ...form,
+        authors: newAuthors
+      }
+    })
+  }
+
+  handleRemoveAuthor(index) {
+    const { form } = this.state;
+
+    const newAuthors = form.authors.filter((_, i) => i !== index);
+
+    this.setState({
+      form: {
+        ...form,
+        authors: newAuthors
+      }
+    });
+  }
+
+  handleAuthorChange(index, key, value) {
+    const { form } = this.state;
+
+    const newAuthors = form.authors.map((author, i) => {
+      return i === index ? {
+        ...author,
+        [key]: value
+      } : author;
+    });
+
+    this.setState({
+      form: {
+        ...form,
+        authors: newAuthors
+      }
+    });
+  }
+
   render() {
-    const { error, progress, form: { imageURL, coordinates: { latitude, longitude } } } = this.state;
+    const { error, progress, form: { imageURL, coordinates: { latitude, longitude }, authors } } = this.state;
 
     return (
       <div>
@@ -121,9 +178,39 @@ class Upload extends Component {
               LOCATION
             </Form.Label>
             <Col sm={10}>
-              <Geolocation onGetLocation={this.handleLocation} />
+              <Form.Row>
+                <Geolocation onGetLocation={this.handleLocation} />
+              </Form.Row>
+              <Form.Row>
+                <span>Lat: {latitude || 'N/A'} - Lon: {longitude || 'N/A'}</span>
+              </Form.Row>
             </Col>
-            <span>Lat: {latitude || 'N/A'} - Lon: {longitude || 'N/A'}</span>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="formAuthors">
+            <Form.Label column sm={2}>
+              AUTHORS
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Row>
+                <Button onClick={this.handleAddAuthor} >
+                  ADD AUTHOR
+                </Button>
+              </Form.Row>
+              <Form.Row>
+                {
+                  Object.keys(authors).map((author, index) => (
+                    <AuthorForm
+                      key={index}
+                      author={authors[author]}
+                      index={index}
+                      onRemove={this.handleRemoveAuthor}
+                      onChange={this.handleAuthorChange}
+                    />
+                  ))
+                }
+              </Form.Row>
+            </Col>
           </Form.Group>
 
           <Form.Group as={Row}>

@@ -22,10 +22,17 @@ const UPLOAD = {
   'Upload.success.message': '¡La imagen ha sido subida exitosamente!'
 };
 
+const FORM = {
+  'Form.authors.facebook': 'Usuario de Facebook',
+  'Form.authors.twitter': 'Usuario de Twitter',
+  'Form.authors.instagram': 'Usuario de Instagram'
+};
+
 const phrases = {
   ...NAVBAR,
   ...GALLERY,
-  ...UPLOAD
+  ...UPLOAD,
+  ...FORM
 };
 
 export default phrases;
