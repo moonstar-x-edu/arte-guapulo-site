@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { withFirebase } from '../../firebase';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import StatusMessages from './StatusMessages';
-import { Geolocation, AuthorForm } from '../common/form';
+import { Geolocation, AuthorForm, TagsForm } from '../common/form';
+import { ENTER_ASCII_CODE } from '../../constants';
 
 class Upload extends Component {
   constructor(props) {
@@ -20,6 +21,10 @@ class Upload extends Component {
         },
         authors: [],
         tags: []
+      },
+      newTag: {
+        tag: '',
+        error: null
       }
     };
 
@@ -34,6 +39,11 @@ class Upload extends Component {
     this.handleAddAuthor = this.handleAddAuthor.bind(this);
     this.handleRemoveAuthor = this.handleRemoveAuthor.bind(this);
     this.handleAuthorChange = this.handleAuthorChange.bind(this);
+
+    this.handleNewTagChange = this.handleNewTagChange.bind(this);
+    this.handleAddTag = this.handleAddTag.bind(this);
+    this.handleTagEnter = this.handleTagEnter.bind(this);
+    this.handleRemoveTag = this.handleRemoveTag.bind(this);
   }
 
 
@@ -156,13 +166,86 @@ class Upload extends Component {
     });
   }
 
+  handleNewTagChange(event) {
+    this.setState({
+      newTag: {
+        tag: event.target.value,
+        error: null
+      }
+    });
+  }
+
+  handleAddTag() {
+    const { form, newTag: { tag } } = this.state;
+
+    const newState = (tag === '' || form.tags.includes(tag)) ?
+      {
+        newTag: {
+          tag,
+          error: true
+        }
+      } :
+      {
+        form: {
+          ...form,
+          tags: [
+            ...form.tags,
+            tag
+          ]
+        },
+        newTag: {
+          tag: '',
+          error: null
+        }
+      };
+
+    this.setState(newState);
+  }
+
+  handleTagEnter(event) {
+    if (event.which !== ENTER_ASCII_CODE) {
+      return;
+    }
+
+    this.handleAddTag();
+  }
+
+  handleRemoveTag(index) {
+    const { form } = this.state;
+
+    const newTags = form.tags.filter((_, i) => i !== index);
+
+    this.setState({
+      form: {
+        ...form,
+        tags: newTags
+      }
+    })
+  }
+
   render() {
-    const { error, progress, form: { imageURL, coordinates: { latitude, longitude }, authors } } = this.state;
+    const {
+      error,
+      progress,
+      form: {
+        imageURL,
+        coordinates: {
+          latitude,
+          longitude
+        },
+        authors,
+        tags
+      },
+      newTag: {
+        tag,
+        error: tagError
+      }
+    } = this.state;
 
     return (
       <div>
         <StatusMessages progress={progress} imageURL={imageURL} error={error} />
-        <Form>
+        <Form className="form">
 
           <Form.Group as={Row} controlId="formImage">
             <Form.Label column sm={2}>
@@ -193,7 +276,7 @@ class Upload extends Component {
             </Form.Label>
             <Col sm={10}>
               <Form.Row>
-                <Button onClick={this.handleAddAuthor} >
+                <Button onClick={this.handleAddAuthor}>
                   ADD AUTHOR
                 </Button>
               </Form.Row>
@@ -209,6 +292,30 @@ class Upload extends Component {
                     />
                   ))
                 }
+              </Form.Row>
+            </Col>
+          </Form.Group>
+
+          <Form.Group as={Row} controlId="formTags">
+            <Form.Label column sm={2}>
+              TAGS
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Row>
+                <Form.Control
+                  type="text"
+                  placeholder="Tag..."
+                  value={tag}
+                  isInvalid={tagError}
+                  onChange={this.handleNewTagChange}
+                  onKeyPress={this.handleTagEnter}
+                />
+                <Button onClick={this.handleAddTag}>
+                  ADD
+                </Button>
+              </Form.Row>
+              <Form.Row>
+                <TagsForm tags={tags} onRemove={this.handleRemoveTag}/>
               </Form.Row>
             </Col>
           </Form.Group>
