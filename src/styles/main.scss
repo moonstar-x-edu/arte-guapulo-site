@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css');
+@import './variables';
+@import './global';
+
+@import '../components/upload';
+
+@import '../components/common/imageCard';
+@import '../components/common/form/tagsForm';
+@import '../components/common/form/authorForm';
