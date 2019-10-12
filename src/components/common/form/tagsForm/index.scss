@@ -1,0 +1,26 @@
+.form {
+
+  .tags-badge {
+    position: relative;
+    margin: 3px 5px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $danger-color;
+
+      .tag-name {
+        margin-right: 1em;
+      }
+
+      &:after {
+        position: absolute;
+        right: 0;
+        padding: 0 5px;
+        content: '\f00d';
+        font-weight: 900;
+        font-family: 'Font Awesome 5 Free', sans-serif;
+      }
+    }
+
+  }
+}

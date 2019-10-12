@@ -1,14 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookSquare, faTwitterSquare, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { Card } from 'react-bootstrap';
+import Icon from '../icon';
 
 const AuthorHandles = ({ social }) => {
   const icon = {
-    facebook: faFacebookSquare,
-    twitter: faTwitterSquare,
-    instagram: faInstagram
+    facebook: 'fa-facebook-square',
+    twitter: 'fa-twitter-square',
+    instagram: 'fa-instagram'
   };
 
   return (
@@ -19,7 +18,7 @@ const AuthorHandles = ({ social }) => {
 
           return handle ? (
             <Card.Text key={index}>
-              <FontAwesomeIcon icon={icon[type]} /> {handle}
+              <Icon type="brand" icon={icon[type]} /> {handle}
             </Card.Text>
           ) : null;
         })

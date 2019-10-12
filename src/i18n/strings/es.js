@@ -16,9 +16,35 @@ const GALLERY = {
   'Gallery.warning.message': 'No hay piezas de galería que mostrar. Si ve este mensaje, contacte al administrador de la página.'
 };
 
+const UPLOAD = {
+  'Upload.error.heading': '¡Ups! Algo sucedió al subir la imagen al servidor...',
+  'Upload.error.message': 'No fue posible subir la imagen al servidor, intentalo más tarde.',
+  'Upload.success.message': '¡La imagen ha sido subida exitosamente!',
+  'Upload.status.uploading': 'Subiendo...',
+  'Upload.status.error.heading': '¡Ups! Algo sucedió al subir los datos de la pieza al servidor...',
+  'Upload.status.error.message': "No fue posible subir los datos de la pieza. El error fue:",
+  'Upload.status.done.heading': '¡Listo!',
+  'Upload.status.done.message': 'Los datos de la pieza han sido subidos con éxito.',
+  'Upload.form.image': 'Imagen',
+  'Upload.form.location': 'Ubicación',
+  'Upload.form.authors': 'Autores',
+  'Upload.form.authors.add': 'Agregar autor',
+  'Upload.form.tags': 'Tags',
+  'Upload.form.tags.add': 'Agregar tag',
+  'Upload.form.submit': 'Subir'
+};
+
+const FORM = {
+  'Form.authors.placeholder': 'Nombre de usuario...',
+  'Form.geolocation.enabled': 'Obtener ubicación',
+  'Form.geolocation.disabled': 'No se puede obtener ubicación'
+};
+
 const phrases = {
   ...NAVBAR,
-  ...GALLERY
+  ...GALLERY,
+  ...UPLOAD,
+  ...FORM
 };
 
 export default phrases;

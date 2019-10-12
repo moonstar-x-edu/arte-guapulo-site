@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 import Alert from './Alert';
 import Text from '../text';
 
-const WarningBox = ({ heading, content, footer }) => {
+const SuccessBox = ({ heading, content, footer, children }) => {
   return (
-    <Alert variant="warning" heading={heading}>
+    <Alert variant="success" heading={heading}>
       {
         content &&
         <p>
           <Text phrase={content} />
         </p>
       }
+      <span className="font-italic">
+        {children}
+      </span>
       {
         footer &&
         <Fragment>
@@ -25,10 +28,10 @@ const WarningBox = ({ heading, content, footer }) => {
   );
 };
 
-WarningBox.propTypes = {
+SuccessBox.propTypes = {
   heading: PropTypes.string,
   content: PropTypes.string,
   footer: PropTypes.string
 };
 
-export default WarningBox;
+export default SuccessBox;
