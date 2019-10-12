@@ -11,7 +11,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Navbar />
-      <Container>
+      <Container className="my-4">
         <Switch>
           <Route exact path="/gallery">
             <Gallery />

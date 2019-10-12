@@ -25,14 +25,14 @@ class Geolocation extends Component {
   render() {
     if (!navigator.geolocation) {
       return (
-        <Button variant="dark" disabled>
+        <Button className="w-100" variant="primary" disabled>
           <Text phrase="Form.geolocation.disabled" />
         </Button>
       );
     }
 
     return (
-      <Button variant="dark" onClick={this.getLocation}>
+      <Button className="w-100" variant="primary" onClick={this.getLocation}>
         <Text phrase="Form.geolocation.enabled" />
       </Button>
     );

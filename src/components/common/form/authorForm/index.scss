@@ -1,0 +1,21 @@
+.form {
+
+  .authors-row {
+    width: 100%;
+    align-items: center;
+    margin-top: 0.5em;
+
+    &:not(:last-child) {
+      border-bottom: $form-separator;
+    }
+
+    .authors-inner-group {
+      display: inline-block;
+    }
+
+    .author-remove-button {
+      margin-top: 2em;
+      margin-left: 1em;
+    }
+  }
+}

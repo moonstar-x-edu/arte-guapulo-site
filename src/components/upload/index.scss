@@ -1,0 +1,47 @@
+.upload {
+  $form-bg: #F5F5F5;
+  $form-border-radius: 15px;
+  $label-color: #000;
+  $location-bg: #fff;
+  $location-border: 1px solid #ced4da;
+  $location-border-radius: 5px;
+
+  .form {
+    padding: 1rem;
+    background-color: $form-bg;
+    border-radius: $form-border-radius;
+
+    .form-label {
+      color: $label-color;
+    }
+
+    .image-input {
+      margin-top: 0.25em;
+      margin-bottom: 0.25em;
+    }
+
+    .outer-form-row {
+      margin-top: 0.75em;
+    }
+
+    .location-row {
+      background-color: $location-bg;
+      border: $location-border;
+      border-radius: $location-border-radius;
+
+      .coords {
+        width: 100%;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+    }
+
+    .tags-row {
+      margin-bottom: 0.75em;
+    }
+
+    .form-separator {
+      border-top: $form-separator;
+    }
+  }
+}

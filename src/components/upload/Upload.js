@@ -238,6 +238,7 @@ class Upload extends Component {
       return;
     }
 
+    event.preventDefault();
     this.handleAddTag();
   }
 
@@ -284,45 +285,50 @@ class Upload extends Component {
     const { upload: { loading: uploading, error: uploadError, done } } = this.props;
 
     return (
-      <div>
+      <div className="upload">
         <ImageStatusMessages progress={progress} imageURL={imageURL} error={error} />
         <UploadStatusMessages uploading={uploading} error={uploadError} done={done} />
         <Form className="form">
 
           <Form.Group as={Row} controlId="formImage">
-            <Form.Label column sm={2}>
+            <Form.Label className="font-weight-bold" column xs={12} sm={2}>
               <Text phrase="Upload.form.image" />
             </Form.Label>
-            <Col sm={10}>
-              <Form.Control ref="imageUpload" type="file" onChange={this.handleFileInput} />
+            <Col xs={12} sm={10}>
+              <Form.Control className="image-input" ref="imageUpload" type="file" onChange={this.handleFileInput} />
             </Col>
           </Form.Group>
 
           <Form.Group as={Row} controlId="formLocation">
-            <Form.Label column sm={2}>
+            <Form.Label className="font-weight-bold" column xs={4} sm={2}>
               <Text phrase="Upload.form.location" />
             </Form.Label>
-            <Col sm={10}>
-              <Form.Row>
-                <Geolocation onGetLocation={this.handleLocation} />
-              </Form.Row>
-              <Form.Row>
-                <span>Lat: {latitude || 'N/A'} - Lon: {longitude || 'N/A'}</span>
+            <Form.Row as={Col} xs={8} sm={10}>
+              <Geolocation onGetLocation={this.handleLocation} />
+            </Form.Row>
+            <Col xs={12} sm={{ span: 10, offset: 2 }}>
+              <Form.Row className="outer-form-row location-row">
+                <div className="coords">
+                  <span className="font-weight-bold">Lat</span>: {latitude || 'N/A'}
+                </div>
+                <div className="coords">
+                  <span className="font-weight-bold">Lon</span>: {longitude || 'N/A'}
+                </div>
               </Form.Row>
             </Col>
           </Form.Group>
 
           <Form.Group as={Row} controlId="formAuthors">
-            <Form.Label column sm={2}>
+            <Form.Label className="font-weight-bold" column xs={4} sm={2}>
               <Text phrase="Upload.form.authors" />
             </Form.Label>
-            <Col sm={10}>
-              <Form.Row>
-                <Button onClick={this.handleAddAuthor}>
-                  <Text phrase="Upload.form.authors.add" />
-                </Button>
-              </Form.Row>
-              <Form.Row>
+            <Form.Row as={Col} xs={8} sm={10}>
+              <Button className="w-100" onClick={this.handleAddAuthor}>
+                <Text phrase="Upload.form.authors.add" />
+              </Button>
+            </Form.Row>
+            <Col xs={12} sm={{ span: 10, offset: 2 }}>
+              <Form.Row className="outer-form-row">
                 {
                   Object.keys(authors).map((author, index) => (
                     <AuthorForm
@@ -339,10 +345,10 @@ class Upload extends Component {
           </Form.Group>
 
           <Form.Group as={Row} controlId="formTags">
-            <Form.Label column sm={2}>
+            <Form.Label className="font-weight-bold" column xs={2} sm={2}>
               <Text phrase="Upload.form.tags" />
             </Form.Label>
-            <Col sm={8}>
+            <Col xs={10} sm={8}>
               <Form.Row>
                 <Form.Control
                   type="text"
@@ -353,20 +359,22 @@ class Upload extends Component {
                   onKeyPress={this.handleTagEnter}
                 />
               </Form.Row>
-              <Form.Row>
+              <Form.Row className="outer-form-row tags-row">
                 <TagsForm tags={tags} onRemove={this.handleRemoveTag}/>
               </Form.Row>
             </Col>
-            <Col sm={2}>
-              <Button onClick={this.handleAddTag}>
+            <Col xs={12} sm={2}>
+              <Button className="w-100" onClick={this.handleAddTag}>
                 <Text phrase="Upload.form.tags.add" />
               </Button>
             </Col>
           </Form.Group>
 
+          <hr className="form-separator" />
+
           <Form.Group as={Row}>
-            <Col sm={{ span: 10, offset: 2 }}>
-              <Button onClick={this.handleUpload} disabled={uploading || done}>
+            <Col sm={12}>
+              <Button className="w-100" variant="success" onClick={this.handleUpload} disabled={uploading || done}>
                 <Text phrase="Upload.form.submit" />
               </Button>
             </Col>
