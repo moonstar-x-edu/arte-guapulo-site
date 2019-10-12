@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Form, Col, Button } from 'react-bootstrap';
+import Icon from '../../icon';
 import { t } from '../../../../i18n';
 
 class AuthorForm extends Component {
@@ -75,7 +76,7 @@ class AuthorForm extends Component {
             variant="danger"
             onClick={() => this.props.onRemove(this.props.index)}
           >
-            X
+            <Icon type="solid" icon="fa-trash" />
           </Button>
         </Form.Group>
 
