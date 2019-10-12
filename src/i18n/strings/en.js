@@ -35,9 +35,7 @@ const UPLOAD = {
 };
 
 const FORM = {
-  'Form.authors.facebook': 'Facebook Username',
-  'Form.authors.twitter': 'Twitter Username',
-  'Form.authors.instagram': 'Instagram Username',
+  'Form.authors.placeholder': 'Username...',
   'Form.geolocation.enabled': 'Get location',
   'Form.geolocation.disabled': "Can't get location"
 };

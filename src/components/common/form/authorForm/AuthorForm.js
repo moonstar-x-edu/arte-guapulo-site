@@ -43,7 +43,7 @@ class AuthorForm extends Component {
             <Form.Label className="font-weight-bold">Facebook</Form.Label>
             <Form.Control
               type="text"
-              placeholder={t('Form.authors.facebook')}
+              placeholder={t('Form.authors.placeholder')}
               value={facebook}
               onChange={this.handleFacebookChange}
             />
@@ -53,7 +53,7 @@ class AuthorForm extends Component {
             <Form.Label className="font-weight-bold">Twitter</Form.Label>
             <Form.Control
               type="text"
-              placeholder={t('Form.authors.twitter')}
+              placeholder={t('Form.authors.placeholder')}
               value={twitter}
               onChange={this.handleTwitterChange}
             />
@@ -63,7 +63,7 @@ class AuthorForm extends Component {
             <Form.Label className="font-weight-bold">Instagram</Form.Label>
             <Form.Control
               type="text"
-              placeholder={t('Form.authors.instagram')}
+              placeholder={t('Form.authors.placeholder')}
               value={instagram}
               onChange={this.handleInstagramChange}
             />
