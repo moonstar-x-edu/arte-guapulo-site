@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import { ProgressBar as BSProgressBar} from 'react-bootstrap';
 
 const ProgressBar = ({ progress }) => {
-  const label = progress === 100 ? 'Complete!' : `${progress}%`;
-
   return (
-    <BSProgressBar animated variant="success" now={progress} label={label} />
+    <BSProgressBar animated variant="success" now={progress} label={`${progress}%`} />
   );
 };
 

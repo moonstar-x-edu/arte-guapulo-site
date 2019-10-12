@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import Text from '../../text';
 
 const positionOptions = {
   timeout: Infinity,
@@ -25,14 +26,14 @@ class Geolocation extends Component {
     if (!navigator.geolocation) {
       return (
         <Button variant="dark" disabled>
-          CANT GET LOCATION
+          <Text phrase="Form.geolocation.disabled" />
         </Button>
       );
     }
 
     return (
       <Button variant="dark" onClick={this.getLocation}>
-        GET LOCATION
+        <Text phrase="Form.geolocation.enabled" />
       </Button>
     );
   }

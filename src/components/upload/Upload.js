@@ -6,6 +6,7 @@ import { Form, Row, Col, Button } from 'react-bootstrap';
 import ImageStatusMessages from './ImageStatusMessages';
 import UploadStatusMessages from './UploadStatusMessages';
 import { Geolocation, AuthorForm, TagsForm } from '../common/form';
+import Text from '../common/text';
 import Actions from '../../redux/actions';
 import { ENTER_ASCII_CODE, UPLOAD_DONE_TIMEOUT, UPLOAD_IMAGE_TIMEOUT } from '../../constants';
 
@@ -290,7 +291,7 @@ class Upload extends Component {
 
           <Form.Group as={Row} controlId="formImage">
             <Form.Label column sm={2}>
-              IMAGE
+              <Text phrase="Upload.form.image" />
             </Form.Label>
             <Col sm={10}>
               <Form.Control ref="imageUpload" type="file" onChange={this.handleFileInput} />
@@ -299,7 +300,7 @@ class Upload extends Component {
 
           <Form.Group as={Row} controlId="formLocation">
             <Form.Label column sm={2}>
-              LOCATION
+              <Text phrase="Upload.form.location" />
             </Form.Label>
             <Col sm={10}>
               <Form.Row>
@@ -313,12 +314,12 @@ class Upload extends Component {
 
           <Form.Group as={Row} controlId="formAuthors">
             <Form.Label column sm={2}>
-              AUTHORS
+              <Text phrase="Upload.form.authors" />
             </Form.Label>
             <Col sm={10}>
               <Form.Row>
                 <Button onClick={this.handleAddAuthor}>
-                  ADD AUTHOR
+                  <Text phrase="Upload.form.authors.add" />
                 </Button>
               </Form.Row>
               <Form.Row>
@@ -339,9 +340,9 @@ class Upload extends Component {
 
           <Form.Group as={Row} controlId="formTags">
             <Form.Label column sm={2}>
-              TAGS
+              <Text phrase="Upload.form.tags" />
             </Form.Label>
-            <Col sm={10}>
+            <Col sm={8}>
               <Form.Row>
                 <Form.Control
                   type="text"
@@ -351,20 +352,22 @@ class Upload extends Component {
                   onChange={this.handleNewTagChange}
                   onKeyPress={this.handleTagEnter}
                 />
-                <Button onClick={this.handleAddTag}>
-                  ADD
-                </Button>
               </Form.Row>
               <Form.Row>
                 <TagsForm tags={tags} onRemove={this.handleRemoveTag}/>
               </Form.Row>
             </Col>
+            <Col sm={2}>
+              <Button onClick={this.handleAddTag}>
+                <Text phrase="Upload.form.tags.add" />
+              </Button>
+            </Col>
           </Form.Group>
 
           <Form.Group as={Row}>
             <Col sm={{ span: 10, offset: 2 }}>
-              <Button type="submit" onClick={this.handleUpload} disabled={uploading || done}>
-                SUBMIT
+              <Button onClick={this.handleUpload} disabled={uploading || done}>
+                <Text phrase="Upload.form.submit" />
               </Button>
             </Col>
           </Form.Group>
