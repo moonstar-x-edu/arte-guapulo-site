@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Alert from './Alert';
 import Text from '../text';
 
-const ErrorBox = ({ heading, content, footer, children }) => {
+const InfoBox = ({ heading, content, footer, children }) => {
   return (
-    <Alert variant="danger" heading={heading}>
+    <Alert variant="info" heading={heading}>
       {
         content &&
         <p>
@@ -26,10 +26,10 @@ const ErrorBox = ({ heading, content, footer, children }) => {
   );
 };
 
-ErrorBox.propTypes = {
+InfoBox.propTypes = {
   heading: PropTypes.string,
   content: PropTypes.string,
   footer: PropTypes.string
 };
 
-export default ErrorBox;
+export default InfoBox;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ProgressBar from '../common/progressBar';
 import { ErrorBox, SuccessBox } from '../common/alertBox';
 
-const StatusMessages = ({ progress, imageURL, error }) => {
+const ImageStatusMessages = ({ progress, imageURL, error }) => {
   return (
     <Fragment>
       {
@@ -22,10 +22,10 @@ const StatusMessages = ({ progress, imageURL, error }) => {
   );
 };
 
-StatusMessages.propTypes = {
+ImageStatusMessages.propTypes = {
   progress: PropTypes.number,
   imageURL: PropTypes.string,
   error: PropTypes.string
 };
 
-export default StatusMessages;
+export default ImageStatusMessages;

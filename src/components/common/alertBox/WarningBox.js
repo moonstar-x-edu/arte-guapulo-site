@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Alert from './Alert';
 import Text from '../text';
 
-const WarningBox = ({ heading, content, footer }) => {
+const WarningBox = ({ heading, content, footer, children }) => {
   return (
     <Alert variant="warning" heading={heading}>
       {
@@ -12,6 +12,7 @@ const WarningBox = ({ heading, content, footer }) => {
           <Text phrase={content} />
         </p>
       }
+      {children}
       {
         footer &&
         <Fragment>

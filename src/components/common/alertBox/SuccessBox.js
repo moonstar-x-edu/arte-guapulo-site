@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Alert from './Alert';
 import Text from '../text';
 
-const SuccessBox = ({ heading, content, footer }) => {
+const SuccessBox = ({ heading, content, footer, children }) => {
   return (
     <Alert variant="success" heading={heading}>
       {
@@ -12,6 +12,7 @@ const SuccessBox = ({ heading, content, footer }) => {
           <Text phrase={content} />
         </p>
       }
+      {children}
       {
         footer &&
         <Fragment>

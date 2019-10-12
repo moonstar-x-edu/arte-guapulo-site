@@ -1,11 +1,42 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../../firebase';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Form, Row, Col, Button } from 'react-bootstrap';
-import StatusMessages from './StatusMessages';
+import ImageStatusMessages from './ImageStatusMessages';
+import UploadStatusMessages from './UploadStatusMessages';
 import { Geolocation, AuthorForm, TagsForm } from '../common/form';
-import { ENTER_ASCII_CODE } from '../../constants';
+import Actions from '../../redux/actions';
+import { ENTER_ASCII_CODE, UPLOAD_UPDATE_TIMEOUT } from '../../constants';
+
+const { postPiece, clearDone } = Actions;
+
+const initialFormState = {
+  image: '',
+  coordinates: {
+    latitude: null,
+    longitude: null
+  },
+  authors: [],
+  tags: []
+};
 
 class Upload extends Component {
+  static getDerivedStateFromProps(props, state) {
+    if (props.upload.done) {
+      setTimeout(() => {
+        props.clearDone();
+      }, UPLOAD_UPDATE_TIMEOUT);
+      return {
+        form: {
+          ...initialFormState,
+          tags: state.form.tags
+        }
+      }
+    }
+    return null;
+  }
+
   constructor(props) {
     super(props);
 
@@ -13,15 +44,7 @@ class Upload extends Component {
       image: '',
       progress: 0,
       error: null,
-      form: {
-        imageURL: '',
-        coordinates: {
-          latitude: null,
-          longitude: null
-        },
-        authors: [],
-        tags: []
-      },
+      form: initialFormState,
       newTag: {
         tag: '',
         error: null
@@ -46,7 +69,6 @@ class Upload extends Component {
     this.handleRemoveTag = this.handleRemoveTag.bind(this);
   }
 
-
   handleFileInput(event) {
     const [image] = event.target.files;
 
@@ -60,8 +82,12 @@ class Upload extends Component {
   handleUpload(event) {
     event.preventDefault();
 
-    const { image } = this.state;
+    const { image, form } = this.state;
     const { firebase } = this.props;
+
+    if (form.image) {
+      this.postPiece(form.image);
+    }
 
     if (!image) {
       return;
@@ -86,20 +112,24 @@ class Upload extends Component {
     });
   }
 
-  handleUploadComplete(imageURL) {
+  handleUploadComplete(image) {
+    const { form } = this.state;
     this.refs.imageUpload.value = '';
+
+    this.postPiece(image);
 
     this.setState({
       image: null,
       form: {
-        imageURL
+        ...form,
+        image
       }
     }, () => {
       setTimeout(() => {
         this.setState({
           progress: 0
         });
-      }, 2000);
+      }, UPLOAD_UPDATE_TIMEOUT);
     });
   }
 
@@ -223,12 +253,21 @@ class Upload extends Component {
     })
   }
 
+  postPiece(image) {
+    const { form } = this.state;
+
+    this.props.postPiece({
+      ...form,
+      image
+    });
+  }
+
   render() {
     const {
       error,
       progress,
       form: {
-        imageURL,
+        image: imageURL,
         coordinates: {
           latitude,
           longitude
@@ -241,10 +280,12 @@ class Upload extends Component {
         error: tagError
       }
     } = this.state;
+    const { upload: { loading: uploading, error: uploadError, done } } = this.props;
 
     return (
       <div>
-        <StatusMessages progress={progress} imageURL={imageURL} error={error} />
+        <ImageStatusMessages progress={progress} imageURL={imageURL} error={error} />
+        <UploadStatusMessages uploading={uploading} error={uploadError} done={done} />
         <Form className="form">
 
           <Form.Group as={Row} controlId="formImage">
@@ -322,7 +363,7 @@ class Upload extends Component {
 
           <Form.Group as={Row}>
             <Col sm={{ span: 10, offset: 2 }}>
-              <Button type="submit" onClick={this.handleUpload}>
+              <Button type="submit" onClick={this.handleUpload} disabled={uploading || done}>
                 SUBMIT
               </Button>
             </Col>
@@ -334,4 +375,13 @@ class Upload extends Component {
   }
 }
 
-export default withFirebase(Upload);
+const mapStateToProps = (state) => {
+  return {
+    upload: state.upload
+  };
+};
+
+export default compose(
+  connect(mapStateToProps, { postPiece, clearDone }),
+  withFirebase
+)(Upload);

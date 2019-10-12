@@ -8,6 +8,11 @@ const getGalleryRequest = () => {
   return axios.get(endpoint('all'));
 };
 
+const postPieceRequest = (body) => {
+  return axios.post(endpoint('create'), body);
+};
+
 export {
-  getGalleryRequest
+  getGalleryRequest,
+  postPieceRequest
 };
