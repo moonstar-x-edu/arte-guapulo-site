@@ -23,7 +23,11 @@ class Gallery extends Component {
 
     if (error) {
       return (
-        <ErrorBox heading="Gallery.error.heading" content="Gallery.error.message" />
+        <ErrorBox heading="Gallery.error.heading" content="Gallery.error.message">
+          <span>
+            {error}
+          </span>
+        </ErrorBox>
       );
     }
 

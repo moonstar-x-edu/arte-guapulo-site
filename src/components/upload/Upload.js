@@ -7,7 +7,7 @@ import ImageStatusMessages from './ImageStatusMessages';
 import UploadStatusMessages from './UploadStatusMessages';
 import { Geolocation, AuthorForm, TagsForm } from '../common/form';
 import Actions from '../../redux/actions';
-import { ENTER_ASCII_CODE, UPLOAD_UPDATE_TIMEOUT } from '../../constants';
+import { ENTER_ASCII_CODE, UPLOAD_DONE_TIMEOUT, UPLOAD_IMAGE_TIMEOUT } from '../../constants';
 
 const { postPiece, clearDone } = Actions;
 
@@ -26,7 +26,7 @@ class Upload extends Component {
     if (props.upload.done) {
       setTimeout(() => {
         props.clearDone();
-      }, UPLOAD_UPDATE_TIMEOUT);
+      }, UPLOAD_DONE_TIMEOUT);
       return {
         form: {
           ...initialFormState,
@@ -129,7 +129,7 @@ class Upload extends Component {
         this.setState({
           progress: 0
         });
-      }, UPLOAD_UPDATE_TIMEOUT);
+      }, UPLOAD_IMAGE_TIMEOUT);
     });
   }
 

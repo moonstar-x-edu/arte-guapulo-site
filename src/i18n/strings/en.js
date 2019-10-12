@@ -19,7 +19,12 @@ const GALLERY = {
 const UPLOAD = {
   'Upload.error.heading': 'Oops! Something went wrong when trying to upload the image...',
   'Upload.error.message': "I couldn't upload the image to the server. Try again later.",
-  'Upload.success.message': 'Image has been successfully uploaded!'
+  'Upload.success.message': 'Image has been successfully uploaded!',
+  'Upload.status.uploading': 'Uploading...',
+  'Upload.status.error.heading': 'Oops! Something went wrong when trying to upload the piece data...',
+  'Upload.status.error.message': "I couldn't upload the piece data to the server. Here's an error message:",
+  'Upload.status.done.heading': 'Done!',
+  'Upload.status.done.message': 'The piece data has been successfully uploaded.'
 };
 
 const FORM = {

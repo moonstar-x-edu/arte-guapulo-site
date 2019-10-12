@@ -19,7 +19,12 @@ const GALLERY = {
 const UPLOAD = {
   'Upload.error.heading': '¡Ups! Algo sucedió al subir la imagen al servidor...',
   'Upload.error.message': 'No fue posible subir la imagen al servidor, intentalo más tarde.',
-  'Upload.success.message': '¡La imagen ha sido subida exitosamente!'
+  'Upload.success.message': '¡La imagen ha sido subida exitosamente!',
+  'Upload.status.uploading': 'Subiendo...',
+  'Upload.status.error.heading': '¡Ups! Algo sucedió al subir los datos de la pieza al servidor...',
+  'Upload.status.error.message': "No fue posible subir los datos de la pieza. El error fue:",
+  'Upload.status.done.heading': '¡Listo!',
+  'Upload.status.done.message': 'Los datos de la pieza han sido subidos con éxito.'
 };
 
 const FORM = {

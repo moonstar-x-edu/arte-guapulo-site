@@ -16,7 +16,11 @@ const ImageStatusMessages = ({ progress, imageURL, error }) => {
       }
       {
         error &&
-        <ErrorBox heading="Upload.error.heading" content="Upload.error.message" />
+        <ErrorBox heading="Upload.error.heading" content="Upload.error.message">
+          <span>
+            {error}
+          </span>
+        </ErrorBox>
       }
     </Fragment>
   );

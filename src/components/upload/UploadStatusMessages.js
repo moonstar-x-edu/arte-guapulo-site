@@ -1,25 +1,26 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import LoadingSpinner from '../common/loadingSpinner';
-import { ErrorBox, SuccessBox, InfoBox } from '../common/alertBox';
+import { ErrorBox, SuccessBox } from '../common/alertBox';
 
 const UploadStatusMessages = ({ uploading, error, done }) => {
   return (
     <Fragment>
       {
         error &&
-          //<ErrorBox content={""} />
-          <span>ERROR: {error}</span>
+          <ErrorBox heading="Upload.status.error.heading" content="Upload.status.error.message">
+            <span>
+              {error}
+            </span>
+          </ErrorBox>
       }
       {
         uploading &&
-          //<InfoBox content={""} />
-          <span>Uploading...</span>
+          <LoadingSpinner loading={uploading} phrase="Upload.status.uploading" />
       }
       {
         done &&
-          //<SuccessBox content={""} />
-          <span>DONE!</span>
+          <SuccessBox heading="Upload.status.done.heading" content="Upload.status.done.message" />
       }
     </Fragment>
   );
