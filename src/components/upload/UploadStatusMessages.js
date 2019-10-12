@@ -16,7 +16,7 @@ const UploadStatusMessages = ({ uploading, error, done }) => {
       }
       {
         uploading &&
-          <LoadingSpinner loading={uploading} phrase="Upload.status.uploading" />
+          <LoadingSpinner className="mx-auto" loading={uploading} phrase="Upload.status.uploading" />
       }
       {
         done &&

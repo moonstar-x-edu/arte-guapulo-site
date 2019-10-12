@@ -4,7 +4,7 @@ import { ProgressBar as BSProgressBar} from 'react-bootstrap';
 
 const ProgressBar = ({ progress }) => {
   return (
-    <BSProgressBar animated variant="success" now={progress} label={`${progress}%`} />
+    <BSProgressBar className="my-3" animated variant="success" now={progress} label={`${progress}%`} />
   );
 };
 

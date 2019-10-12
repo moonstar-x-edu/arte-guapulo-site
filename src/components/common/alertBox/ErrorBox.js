@@ -12,7 +12,9 @@ const ErrorBox = ({ heading, content, footer, children }) => {
           <Text phrase={content} />
         </p>
       }
-      {children}
+      <span className="font-italic">
+        {children}
+      </span>
       {
         footer &&
         <Fragment>
