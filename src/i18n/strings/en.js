@@ -9,6 +9,7 @@ const GALLERY = {
   'Gallery.card.author': 'Author',
   'Gallery.card.authors': 'Authors',
   'Gallery.card.tags': 'Tags',
+  'Gallery.card.location.modal.heading': "Piece's location",
   'Gallery.loading': 'Loading images...',
   'Gallery.error.heading': 'Oops! Something went wrong when trying to get the gallery information...',
   'Gallery.error.message': 'There was an error when trying to fetch all the gallery pieces information. If you see this message, contact the website administrator.',

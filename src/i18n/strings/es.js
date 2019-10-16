@@ -9,6 +9,7 @@ const GALLERY = {
   'Gallery.card.author': 'Autor',
   'Gallery.card.authors': 'Autores',
   'Gallery.card.tags': 'Tags',
+  'Gallery.card.location.modal.heading': 'Ubicación de la pieza',
   'Gallery.loading': 'Cargando imágenes...',
   'Gallery.error.heading': '¡Ups! Algo sucedió al tratar de descargar la galería...',
   'Gallery.error.message': 'Hubo un error al descargar la información de las piezas de la galería. Si ve este mensaje, contacte al administrador de la página.',
