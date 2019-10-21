@@ -1,0 +1,22 @@
+.icon {
+  $facebook-color: #3b5998;
+  $instagram-color: #c13584;
+  $twitter-color: #1da1f2;
+
+  &.inline {
+    margin-right: 0.5em;
+  }
+
+  &.facebook {
+    color: $facebook-color;
+  }
+
+  &.instagram {
+    color: $instagram-color;
+  }
+
+  &.twitter {
+    color: $twitter-color;
+  }
+
+}

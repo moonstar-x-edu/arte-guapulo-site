@@ -5,7 +5,9 @@ const NAVBAR = {
 };
 
 const GALLERY = {
+  'Gallery.card.title': 'Information',
   'Gallery.card.location': 'Location',
+  'Gallery.card.location.show': 'Show location',
   'Gallery.card.author': 'Author',
   'Gallery.card.authors': 'Authors',
   'Gallery.card.tags': 'Tags',

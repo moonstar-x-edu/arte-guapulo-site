@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Icon = ({ type, icon }) => {
+const Icon = ({ type, icon, className }) => {
   const types = {
     regular: 'far',
     brand: 'fab',
@@ -9,7 +9,7 @@ const Icon = ({ type, icon }) => {
   };
 
   return (
-    <i className={`${types[type]} ${icon}`} />
+    <i className={`${types[type]} ${icon} icon inline ${className}`} />
   );
 };
 
@@ -19,7 +19,8 @@ Icon.propTypes = {
     'brand',
     'solid'
   ]).isRequired,
-  icon: PropTypes.string.isRequired
+  icon: PropTypes.string.isRequired,
+  className: PropTypes.string
 };
 
 export default Icon;

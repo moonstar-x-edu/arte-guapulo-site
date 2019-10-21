@@ -4,23 +4,21 @@ import { Card } from 'react-bootstrap';
 import { AuthorsList } from '../authors';
 import TagChips from '../tagChips';
 import Text from '../text';
-import MapLink from '../mapLink';
+import MapButton from '../mapButton';
 
 const ImageOverlay = ({ visible, piece, authors, tags, onShowModal }) => {
   return visible ? (
     <Card.ImgOverlay className="card-overlay">
-      <Card.Title>Graffiti #1</Card.Title>
-      <Card.Text>
-        <Text phrase="Gallery.card.location" />:
-      </Card.Text>
-      <Card.Text>
-        <MapLink onClick={onShowModal} />
-      </Card.Text>
-      <AuthorsList piece={piece} authors={authors} />
-      <Card.Text>
-        <Text phrase="Gallery.card.tags" />
-      </Card.Text>
-      <TagChips tags={tags} />
+      <Card.Body>
+        <Card.Title>
+          <Text phrase="Gallery.card.title" />
+        </Card.Title>
+
+        <AuthorsList piece={piece} authors={authors} />
+        <MapButton onClick={onShowModal} />
+        <TagChips tags={tags} />
+
+      </Card.Body>
     </Card.ImgOverlay>
   ) : null;
 };
