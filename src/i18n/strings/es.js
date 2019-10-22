@@ -42,6 +42,7 @@ const UPLOAD = {
 
 const FORM = {
   'Form.authors.placeholder': 'Nombre de usuario...',
+  'Form.authors.placeholder.justName': 'Nombre...',
   'Form.geolocation.enabled': 'Obtener ubicación',
   'Form.geolocation.disabled': 'No se puede obtener ubicación'
 };
