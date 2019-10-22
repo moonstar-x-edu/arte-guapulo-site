@@ -2,6 +2,7 @@
   $facebook-color: #3b5998;
   $instagram-color: #c13584;
   $twitter-color: #1da1f2;
+  $justName-color: #d3d3d3;
 
   &.inline {
     margin-right: 0.5em;
@@ -19,4 +20,7 @@
     color: $twitter-color;
   }
 
+  &.justName {
+    color: $justName-color;
+  }
 }

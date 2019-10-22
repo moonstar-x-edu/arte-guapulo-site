@@ -154,7 +154,8 @@ class Upload extends Component {
       {
         facebook: '',
         twitter: '',
-        instagram: ''
+        instagram: '',
+        justName: ''
       }
     ];
 

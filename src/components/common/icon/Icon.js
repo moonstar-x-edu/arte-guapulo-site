@@ -9,7 +9,7 @@ const Icon = ({ type, icon, className }) => {
   };
 
   return (
-    <i className={`${types[type]} ${icon} icon inline ${className}`} />
+    <i className={`${types[type]} ${icon} icon ${className}`} />
   );
 };
 
