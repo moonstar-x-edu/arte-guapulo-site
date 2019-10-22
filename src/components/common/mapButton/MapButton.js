@@ -7,7 +7,7 @@ import Text from '../text';
 const MapButton = ({ onClick }) => {
   return (
     <Button className="location-button" onClick={onClick}>
-      <Icon type="solid" icon="fa-map-marked-alt" />
+      <Icon className="inline" type="solid" icon="fa-map-marked-alt" />
       <Text phrase="Gallery.card.location.show" />
     </Button>
   );
