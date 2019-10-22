@@ -1,7 +1,10 @@
 const NAVBAR = {
   'Navbar.brand': 'Arte en Guápulo',
   'Navbar.home': 'Inicio',
-  'Navbar.gallery': 'Galería'
+  'Navbar.gallery': 'Galería',
+  'Navbar.locale.toggle': 'Seleccionar Idioma',
+  'Navbar.locale.english': 'Inglés',
+  'Navbar.locale.spanish': 'Español'
 };
 
 const GALLERY = {
