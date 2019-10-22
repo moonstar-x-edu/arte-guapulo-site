@@ -14,7 +14,7 @@ const AuthorsList = ({ piece, authors }) => {
   const phrase = numberOfAuthors > 1 ? 'Gallery.card.authors' : 'Gallery.card.author';
 
   return (
-    <div className="card-content-box">
+    <div className="card-content-box authors">
       <Card.Text className="text-center mb-2">
         <Text phrase={phrase} />
       </Card.Text>

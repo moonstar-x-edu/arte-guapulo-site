@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 import Icon from '../icon';
+import { getSocialURL } from '../../../utils';
 
 const AuthorHandles = ({ social, className }) => {
   const icon = {
@@ -15,11 +16,15 @@ const AuthorHandles = ({ social, className }) => {
       const handle = social[type];
 
       return handle ? (
-        <div className={`tabled ${className}`} key={index}>
-          <Icon className={`tabled-cell ${type}`} type="brand" icon={icon[type]} />
-          <Card.Text className="tabled-cell">
-            {handle}
-          </Card.Text>
+        <div key={index} className={className}>
+          <a key={index} className="author-link" href={getSocialURL(type, handle)}>
+            <div className="tabled">
+              <Icon className={`tabled-cell ${type}`} type="brand" icon={icon[type]} />
+              <Card.Text className="tabled-cell">
+                {handle}
+              </Card.Text>
+            </div>
+          </a>
         </div>
       ) : null;
     })

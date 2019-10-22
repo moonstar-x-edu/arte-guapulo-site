@@ -1,6 +1,7 @@
 .image-card {
   $overlay-bg: rgba(0, 0, 0, 0.4);
   $content-box-bg: rgba(255, 255, 255, 0.3);
+  $link-text: #fff;
 
   $authors-separator-border: #ced4da 1px solid;
   $author-icon-size: 1.5em;
@@ -51,6 +52,11 @@
       .author-handle {
         padding: 0 $section-padding;
         width: calc(100% - 2 * #{$section-padding});
+
+        .author-link {
+          text-decoration: none;
+          color: $link-text;
+        }
 
         &:hover {
           border-radius: $authors-handle-border-radius;
