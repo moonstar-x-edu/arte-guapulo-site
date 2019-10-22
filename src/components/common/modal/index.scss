@@ -1,0 +1,23 @@
+.modal {
+
+  .modal-dialog {
+
+    .modal-content {
+
+      .modal-header {
+        padding: 0.5rem 1rem;
+
+        .close {
+          line-height: 1.4;
+          padding: 0.45rem 1rem;
+          margin: -0.35rem -0.8rem -0.35rem auto;
+        }
+      }
+
+      .modal-body {
+        padding: 0;
+
+      }
+    }
+  }
+}
