@@ -6,7 +6,7 @@ const getMapEmbedURL = (latitude, longitude) => {
 
 const getSocialURL = (site, userHandle) => {
   const url = SOCIAL_URLS[site];
-  return `${url}/${userHandle}/`;
+  return url ? `${url}/${userHandle}/` : null;
 };
 
 export {
