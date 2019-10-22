@@ -29,7 +29,8 @@ Authors.propTypes = {
   authors: PropTypes.arrayOf(PropTypes.exact({
     facebook: PropTypes.string,
     twitter: PropTypes.string,
-    instagram: PropTypes.string
+    instagram: PropTypes.string,
+    justName: PropTypes.string
   })).isRequired,
   className: PropTypes.string
 };
