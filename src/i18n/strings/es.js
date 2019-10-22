@@ -1,14 +1,20 @@
 const NAVBAR = {
   'Navbar.brand': 'Arte en Guápulo',
   'Navbar.home': 'Inicio',
-  'Navbar.gallery': 'Galería'
+  'Navbar.gallery': 'Galería',
+  'Navbar.locale.toggle': 'Seleccionar Idioma',
+  'Navbar.locale.english': 'Inglés',
+  'Navbar.locale.spanish': 'Español'
 };
 
 const GALLERY = {
+  'Gallery.card.title': 'Información',
   'Gallery.card.location': 'Ubicación',
+  'Gallery.card.location.show': 'Mostrar ubicación',
   'Gallery.card.author': 'Autor',
   'Gallery.card.authors': 'Autores',
   'Gallery.card.tags': 'Tags',
+  'Gallery.card.location.modal.heading': 'Ubicación de la pieza',
   'Gallery.loading': 'Cargando imágenes...',
   'Gallery.error.heading': '¡Ups! Algo sucedió al tratar de descargar la galería...',
   'Gallery.error.message': 'Hubo un error al descargar la información de las piezas de la galería. Si ve este mensaje, contacte al administrador de la página.',

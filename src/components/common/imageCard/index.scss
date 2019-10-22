@@ -1,7 +1,95 @@
 .image-card {
+  $overlay-bg: rgba(0, 0, 0, 0.4);
+  $content-box-bg: rgba(255, 255, 255, 0.3);
+  $link-text: #fff;
+
+  $authors-separator-border: #ced4da 1px solid;
+  $author-icon-size: 1.5em;
+
+  $section-padding: 0.5em;
+  $content-box-border-radius: 8px;
+  $authors-handle-border-radius: 5px;
+  $badge-margin: 1px 3px;
+
+  // TODO: Change these colors.
+  $tags-badge-bg: #55ff55;
+  $tags-badge-bg-hover: #ff5555;
+
+  $location-button-bg: #787878;
+  $location-button-bg-hover: #343434;
 
   .card-overlay {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: $overlay-bg;
     overflow: scroll;
+
+    .card-body {
+      padding: 0;
+
+      .tabled {
+        display: table;
+
+        .tabled-cell {
+          display: table-cell;
+          vertical-align: middle;
+
+          &:first-child {
+            width: $author-icon-size;
+          }
+        }
+      }
+
+      .location-button {
+        margin: $section-padding 0;
+        width: 100%;
+        background-color: $location-button-bg;
+        border: 0;
+
+        &:hover {
+          background-color: $location-button-bg-hover;
+        }
+      }
+
+      .author-handle {
+        padding: 0 $section-padding;
+        width: calc(100% - 2 * #{$section-padding});
+
+        .author-link {
+          text-decoration: none;
+          color: $link-text;
+        }
+
+        &:hover {
+          border-radius: $authors-handle-border-radius;
+          background-color: $content-box-bg;
+          cursor: pointer;
+        }
+      }
+
+      .authors-separator {
+        border: $authors-separator-border;
+        margin: $section-padding 0;
+      }
+
+      .card-content-box {
+        background-color: $content-box-bg;
+        border-radius: $content-box-border-radius;
+        padding: $section-padding 0;
+      }
+
+      .tag-chips {
+        text-align: center;
+
+        .badge {
+          margin: $badge-margin;
+          background-color: $tags-badge-bg;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $tags-badge-bg-hover;
+
+          }
+        }
+      }
+    }
   }
 }

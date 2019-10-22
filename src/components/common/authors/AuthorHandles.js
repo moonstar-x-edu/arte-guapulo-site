@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 import Icon from '../icon';
+import { getSocialURL } from '../../../utils';
 
-const AuthorHandles = ({ social }) => {
+const AuthorHandles = ({ social, className }) => {
   const icon = {
     facebook: 'fa-facebook-square',
     twitter: 'fa-twitter-square',
@@ -11,19 +12,22 @@ const AuthorHandles = ({ social }) => {
   };
 
   return (
-    <Fragment>
-      {
-        Object.keys(social).map((type, index) => {
-          const handle = social[type];
+    Object.keys(social).map((type, index) => {
+      const handle = social[type];
 
-          return handle ? (
-            <Card.Text key={index}>
-              <Icon type="brand" icon={icon[type]} /> {handle}
-            </Card.Text>
-          ) : null;
-        })
-      }
-    </Fragment>
+      return handle ? (
+        <div key={index} className={className}>
+          <a key={index} className="author-link" href={getSocialURL(type, handle)}>
+            <div className="tabled">
+              <Icon className={`tabled-cell ${type}`} type="brand" icon={icon[type]} />
+              <Card.Text className="tabled-cell">
+                {handle}
+              </Card.Text>
+            </div>
+          </a>
+        </div>
+      ) : null;
+    })
   );
 };
 
@@ -32,7 +36,8 @@ AuthorHandles.propTypes = {
     facebook: PropTypes.string,
     twitter: PropTypes.string,
     instagram: PropTypes.string
-  }).isRequired
+  }).isRequired,
+  className: PropTypes.string
 };
 
 export default AuthorHandles;

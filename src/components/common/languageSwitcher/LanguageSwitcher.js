@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ButtonToolbar, Button } from 'react-bootstrap';
+import { Dropdown, NavItem, Nav } from 'react-bootstrap';
 import Actions from '../../../redux/actions';
+import Text from '../text';
 
 const { setLocale } = Actions;
 
@@ -9,10 +10,10 @@ class LanguageSwitcher extends Component {
   constructor(props) {
     super(props);
 
-    this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.handleLocaleSelect = this.handleLocaleSelect.bind(this);
   }
 
-  handleButtonClick(locale) {
+  handleLocaleSelect(locale) {
     this.props.setLocale(locale);
   }
 
@@ -20,22 +21,19 @@ class LanguageSwitcher extends Component {
     const { app: { locale } } = this.props;
 
     return (
-      <ButtonToolbar>
-        <Button
-          variant="secondary"
-          active={locale === 'en'}
-          onClick={() => this.handleButtonClick('en')}
-        >
-          EN
-        </Button>
-        <Button
-          variant="secondary"
-          active={locale === 'es'}
-          onClick={() => this.handleButtonClick('es')}
-        >
-          ES
-        </Button>
-      </ButtonToolbar>
+      <Dropdown className="language-switcher" as={NavItem} onSelect={this.handleLocaleSelect}>
+        <Dropdown.Toggle as={Nav.Link}>
+          <Text phrase="Navbar.locale.toggle" />
+        </Dropdown.Toggle>
+        <Dropdown.Menu alignRight>
+          <Dropdown.Item eventKey="en" active={locale === 'en'}>
+            <Text phrase="Navbar.locale.english" />
+          </Dropdown.Item>
+          <Dropdown.Item eventKey="es" active={locale === 'es'}>
+            <Text phrase="Navbar.locale.spanish" />
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     );
   }
 }

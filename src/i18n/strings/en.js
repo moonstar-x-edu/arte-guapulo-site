@@ -1,14 +1,20 @@
 const NAVBAR = {
   'Navbar.brand': 'Art in Guápulo',
   'Navbar.home': 'Home',
-  'Navbar.gallery': 'Gallery'
+  'Navbar.gallery': 'Gallery',
+  'Navbar.locale.toggle': 'Language Select',
+  'Navbar.locale.english': 'English',
+  'Navbar.locale.spanish': 'Spanish'
 };
 
 const GALLERY = {
+  'Gallery.card.title': 'Information',
   'Gallery.card.location': 'Location',
+  'Gallery.card.location.show': 'Show location',
   'Gallery.card.author': 'Author',
   'Gallery.card.authors': 'Authors',
   'Gallery.card.tags': 'Tags',
+  'Gallery.card.location.modal.heading': "Piece's location",
   'Gallery.loading': 'Loading images...',
   'Gallery.error.heading': 'Oops! Something went wrong when trying to get the gallery information...',
   'Gallery.error.message': 'There was an error when trying to fetch all the gallery pieces information. If you see this message, contact the website administrator.',
