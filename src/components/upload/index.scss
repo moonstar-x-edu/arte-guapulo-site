@@ -1,18 +1,16 @@
 .upload {
   $form-bg: #F5F5F5;
   $form-border-radius: 15px;
-  $label-color: #000;
-  $location-bg: #fff;
-  $location-border: 1px solid #ced4da;
   $location-border-radius: 5px;
 
   .form {
     padding: 1rem;
     background-color: $form-bg;
     border-radius: $form-border-radius;
+    border: $navy 2px solid;
 
     .form-label {
-      color: $label-color;
+      color: $black;
     }
 
     .image-input {
@@ -25,8 +23,8 @@
     }
 
     .location-row {
-      background-color: $location-bg;
-      border: $location-border;
+      background-color: $white;
+      border: $light-box-border;
       border-radius: $location-border-radius;
 
       .coords {

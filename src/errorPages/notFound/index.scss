@@ -1,8 +1,4 @@
 .not-found {
-  //TODO: Need to change these colors.
-  $not-found-button-color: #55ff55;
-  $not-found-button-color-hover: #5555ff;
-
   width: 100%;
 
   .shrug {
@@ -37,14 +33,10 @@
 
     .not-found-button {
       border: 0;
-      background-color: $not-found-button-color;
+      background-color: $light-blue;
 
-      &:hover {
-        background-color: $not-found-button-color-hover;
-      }
-
-      &:focus {
-        border-color: #000;
+      &:hover, &:focus, &:active {
+        background-color: $dark-blue !important;
       }
     }
   }
