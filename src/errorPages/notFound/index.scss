@@ -1,0 +1,51 @@
+.not-found {
+  //TODO: Need to change these colors.
+  $not-found-button-color: #55ff55;
+  $not-found-button-color-hover: #5555ff;
+
+  width: 100%;
+
+  .shrug {
+    display: block;
+
+    &.centered {
+      margin: 10% auto;
+      text-align: center;
+    }
+
+    &.big-text {
+      font-size: 4em;
+    }
+  }
+
+  .not-found-description {
+    margin: 0 1em 2em 1em;
+
+    .not-found-title {
+      font-size: 2em;
+      font-weight: 600;
+    }
+
+    .not-found-text {
+      font-size: 1.25em;
+    }
+  }
+
+  .not-found-link {
+    text-align: center;
+    text-decoration: none;
+
+    .not-found-button {
+      border: 0;
+      background-color: $not-found-button-color;
+
+      &:hover {
+        background-color: $not-found-button-color-hover;
+      }
+
+      &:focus {
+        border-color: #000;
+      }
+    }
+  }
+}
