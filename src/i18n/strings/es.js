@@ -1,14 +1,20 @@
 const NAVBAR = {
   'Navbar.brand': 'Arte en Guápulo',
   'Navbar.home': 'Inicio',
-  'Navbar.gallery': 'Galería'
+  'Navbar.gallery': 'Galería',
+  'Navbar.locale.toggle': 'Seleccionar Idioma',
+  'Navbar.locale.english': 'Inglés',
+  'Navbar.locale.spanish': 'Español'
 };
 
 const GALLERY = {
+  'Gallery.card.title': 'Información',
   'Gallery.card.location': 'Ubicación',
+  'Gallery.card.location.show': 'Mostrar ubicación',
   'Gallery.card.author': 'Autor',
   'Gallery.card.authors': 'Autores',
   'Gallery.card.tags': 'Tags',
+  'Gallery.card.location.modal.heading': 'Ubicación de la pieza',
   'Gallery.loading': 'Cargando imágenes...',
   'Gallery.error.heading': '¡Ups! Algo sucedió al tratar de descargar la galería...',
   'Gallery.error.message': 'Hubo un error al descargar la información de las piezas de la galería. Si ve este mensaje, contacte al administrador de la página.',
@@ -36,15 +42,32 @@ const UPLOAD = {
 
 const FORM = {
   'Form.authors.placeholder': 'Nombre de usuario...',
+  'Form.authors.placeholder.justName': 'Nombre...',
   'Form.geolocation.enabled': 'Obtener ubicación',
   'Form.geolocation.disabled': 'No se puede obtener ubicación'
+};
+
+const NOT_FOUND = {
+  'NotFound.title': '¡Ups, página no encontrada!',
+  'NotFound.description': 'La página que intentó acceder no existe.',
+  'NotFound.link': 'Ir a inicio'
+};
+
+const SITE = {
+  'Site.title.prefix': 'Arte en Guápulo',
+  'Site.title.notFound': '¡Página no Encontrada!',
+  'Site.title.home': 'Inicio',
+  'Site.title.gallery': 'Galería',
+  'Site.title.upload': 'Subida de Datos'
 };
 
 const phrases = {
   ...NAVBAR,
   ...GALLERY,
   ...UPLOAD,
-  ...FORM
+  ...FORM,
+  ...NOT_FOUND,
+  ...SITE
 };
 
 export default phrases;

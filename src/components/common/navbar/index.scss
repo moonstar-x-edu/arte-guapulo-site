@@ -1,0 +1,46 @@
+nav.navbar {
+  $navbar-toggler-color: rgba(255, 255, 255, 0.9); // Needs to be in RGBA for SVG Stroke
+  $navbar-toggler-color-hover: rgba(255, 255, 255, 0.7); // Needs to be in RGBA for SVG Stroke
+
+  background-color: $navy;
+
+  .navbar-brand {
+    color: $white;
+
+    &:hover, &:focus {
+      color: $light-olive;
+    }
+  }
+
+  .navbar-toggler {
+    border-color: $navbar-toggler-color;
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-toggler-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+      color: $navbar-toggler-color;
+
+      &:hover, &:focus {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-toggler-color-hover}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        color: $navbar-toggler-color;
+      }
+    }
+
+    &:hover, &:focus {
+      border-color: $navbar-toggler-color-hover;
+    }
+  }
+
+  .navbar-collapse {
+
+   .navbar-nav {
+
+     .nav-link {
+       color: $white;
+
+       &:hover, &:focus {
+         color: $light-olive;
+       }
+     }
+   }
+  }
+}

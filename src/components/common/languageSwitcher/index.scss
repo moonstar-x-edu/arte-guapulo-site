@@ -1,0 +1,21 @@
+.language-switcher {
+
+  &.dropdown {
+
+    .dropdown-menu {
+
+      .dropdown-item {
+
+        &:hover {
+          background-color: $light-blue;
+          color: $white;
+        }
+
+        &.active, &:active {
+          background-color: $dark-blue;
+          color: $white;
+        }
+      }
+    }
+  }
+}

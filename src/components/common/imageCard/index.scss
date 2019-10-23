@@ -1,7 +1,85 @@
 .image-card {
+  $overlay-bg: rgba(0, 0, 0, 0.4);
+  $content-box-bg: rgba(255, 255, 255, 0.3);
+
+  $author-icon-size: 1.5em;
+  $section-padding: 0.5em;
+  $content-box-border-radius: 8px;
+  $authors-handle-border-radius: 5px;
+  $badge-margin: 1px 3px;
 
   .card-overlay {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: $overlay-bg;
     overflow: scroll;
+
+    .card-body {
+      padding: 0;
+
+      .tabled {
+        display: table;
+
+        .tabled-cell {
+          display: table-cell;
+          vertical-align: middle;
+
+          &:first-child {
+            width: $author-icon-size;
+          }
+        }
+      }
+
+      .location-button {
+        margin: $section-padding 0;
+        width: 100%;
+        background-color: $light-blue;
+        border: 0;
+
+        &:hover, &:active, &:focus {
+          background-color: $dark-blue !important;
+        }
+      }
+
+      .author-handle {
+        padding: 0 $section-padding;
+        width: calc(100% - 2 * #{$section-padding});
+
+        .author-link {
+          text-decoration: none;
+          color: $white;
+        }
+
+        &:hover {
+          border-radius: $authors-handle-border-radius;
+          background-color: $content-box-bg;
+          cursor: pointer;
+        }
+      }
+
+      .authors-separator {
+        border: $light-box-border;
+        margin: $section-padding 0;
+      }
+
+      .card-content-box {
+        background-color: $content-box-bg;
+        border-radius: $content-box-border-radius;
+        padding: $section-padding 0;
+      }
+
+      .tag-chips {
+        text-align: center;
+
+        .badge {
+          margin: $badge-margin;
+          background-color: $light-blue;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $dark-blue;
+
+          }
+        }
+      }
+    }
   }
 }

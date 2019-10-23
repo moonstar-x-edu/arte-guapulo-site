@@ -4,22 +4,21 @@ import { Card } from 'react-bootstrap';
 import { AuthorsList } from '../authors';
 import TagChips from '../tagChips';
 import Text from '../text';
+import MapButton from '../mapButton';
 
-const ImageOverlay = ({ visible, piece, coordinates, authors, tags }) => {
-  const { latitude, longitude } = coordinates;
-
+const ImageOverlay = ({ visible, piece, authors, tags, onShowModal }) => {
   return visible ? (
     <Card.ImgOverlay className="card-overlay">
-      <Card.Title>Graffiti #1</Card.Title>
-      <Card.Text>
-        <Text phrase="Gallery.card.location" />:
-      </Card.Text>
-      <Card.Text>Lat: {latitude} Lon: {longitude}</Card.Text>
-      <AuthorsList piece={piece} authors={authors} />
-      <Card.Text>
-        <Text phrase="Gallery.card.tags" />
-      </Card.Text>
-      <TagChips tags={tags} />
+      <Card.Body>
+        <Card.Title>
+          <Text phrase="Gallery.card.title" />
+        </Card.Title>
+
+        <AuthorsList piece={piece} authors={authors} />
+        <MapButton onClick={onShowModal} />
+        <TagChips tags={tags} />
+
+      </Card.Body>
     </Card.ImgOverlay>
   ) : null;
 };
@@ -34,9 +33,11 @@ ImageOverlay.propTypes = {
   authors: PropTypes.arrayOf(PropTypes.exact({
     facebook: PropTypes.string,
     twitter: PropTypes.string,
-    instagram: PropTypes.string
+    instagram: PropTypes.string,
+    justName: PropTypes.string
   })).isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string).isRequired
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onShowModal: PropTypes.func.isRequired
 };
 
 export default ImageOverlay;

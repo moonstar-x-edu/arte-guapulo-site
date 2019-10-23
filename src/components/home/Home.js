@@ -1,22 +1,34 @@
-import React from 'react';
-import LanguageSwitcher from '../common/languageSwitcher';
-import Text from '../common/text';
-import LoadingSpinner from '../common/loadingSpinner';
-import { ErrorBox, WarningBox } from '../common/alertBox';
-import ProgressBar from '../common/progressBar';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updatePageTitle } from '../../utils';
 
-const Home = () => {
-  return (
-    <div>
-      HOME!
-      <LanguageSwitcher />
-      <Text phrase="Navbar.home"/>
-      <LoadingSpinner loading={true} phrase="Gallery.loading" />
-      <ErrorBox heading="Gallery.error.heading" content="Gallery.error.message" />
-      <WarningBox heading="Gallery.warning.heading" content="Gallery.warning.message" />
-      <ProgressBar progress={null}/>
-    </div>
-  );
+class Home extends Component {
+  componentDidMount() {
+    updatePageTitle('Site.title.home');
+  }
+
+  componentDidUpdate(prevProps) {
+    const { app: { locale: oldLocale } } = prevProps;
+    const { app: { locale: newLocale } } = this.props;
+
+    if (oldLocale !== newLocale) {
+      updatePageTitle('Site.title.home');
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        HOME!
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    app: state.app
+  };
 };
 
-export default Home;
+export default connect(mapStateToProps)(Home);

@@ -14,12 +14,12 @@ const AuthorsList = ({ piece, authors }) => {
   const phrase = numberOfAuthors > 1 ? 'Gallery.card.authors' : 'Gallery.card.author';
 
   return (
-    <Card.Body>
-      <Card.Text>
+    <div className="card-content-box authors">
+      <Card.Text className="text-center mb-2">
         <Text phrase={phrase} />
       </Card.Text>
       <Authors piece={piece} authors={authors} />
-    </Card.Body>
+    </div>
   );
 };
 
@@ -28,7 +28,8 @@ AuthorsList.propTypes = {
   authors: PropTypes.arrayOf(PropTypes.exact({
     facebook: PropTypes.string,
     twitter: PropTypes.string,
-    instagram: PropTypes.string
+    instagram: PropTypes.string,
+    justName: PropTypes.string
   })).isRequired,
 };
 

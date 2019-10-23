@@ -1,0 +1,43 @@
+.not-found {
+  width: 100%;
+
+  .shrug {
+    display: block;
+
+    &.centered {
+      margin: 10% auto;
+      text-align: center;
+    }
+
+    &.big-text {
+      font-size: 4em;
+    }
+  }
+
+  .not-found-description {
+    margin: 0 1em 2em 1em;
+
+    .not-found-title {
+      font-size: 2em;
+      font-weight: 600;
+    }
+
+    .not-found-text {
+      font-size: 1.25em;
+    }
+  }
+
+  .not-found-link {
+    text-align: center;
+    text-decoration: none;
+
+    .not-found-button {
+      border: 0;
+      background-color: $light-blue;
+
+      &:hover, &:focus, &:active {
+        background-color: $dark-blue !important;
+      }
+    }
+  }
+}
