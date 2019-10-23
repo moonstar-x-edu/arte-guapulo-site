@@ -1,22 +1,12 @@
 .image-card {
   $overlay-bg: rgba(0, 0, 0, 0.4);
   $content-box-bg: rgba(255, 255, 255, 0.3);
-  $link-text: #fff;
 
-  $authors-separator-border: #ced4da 1px solid;
   $author-icon-size: 1.5em;
-
   $section-padding: 0.5em;
   $content-box-border-radius: 8px;
   $authors-handle-border-radius: 5px;
   $badge-margin: 1px 3px;
-
-  // TODO: Change these colors.
-  $tags-badge-bg: #55ff55;
-  $tags-badge-bg-hover: #ff5555;
-
-  $location-button-bg: #787878;
-  $location-button-bg-hover: #343434;
 
   .card-overlay {
     background-color: $overlay-bg;
@@ -41,11 +31,11 @@
       .location-button {
         margin: $section-padding 0;
         width: 100%;
-        background-color: $location-button-bg;
+        background-color: $light-blue;
         border: 0;
 
-        &:hover {
-          background-color: $location-button-bg-hover;
+        &:hover, &:active, &:focus {
+          background-color: $dark-blue !important;
         }
       }
 
@@ -55,7 +45,7 @@
 
         .author-link {
           text-decoration: none;
-          color: $link-text;
+          color: $white;
         }
 
         &:hover {
@@ -66,7 +56,7 @@
       }
 
       .authors-separator {
-        border: $authors-separator-border;
+        border: $light-box-border;
         margin: $section-padding 0;
       }
 
@@ -81,11 +71,11 @@
 
         .badge {
           margin: $badge-margin;
-          background-color: $tags-badge-bg;
+          background-color: $light-blue;
           cursor: pointer;
 
           &:hover {
-            background-color: $tags-badge-bg-hover;
+            background-color: $dark-blue;
 
           }
         }
