@@ -47,11 +47,18 @@ const FORM = {
   'Form.geolocation.disabled': "Can't get location"
 };
 
+const NOT_FOUND = {
+  'NotFound.title': 'Oops, not found!',
+  'NotFound.description': 'The page you were trying to access was not found.',
+  'NotFound.link': 'Go to Home'
+};
+
 const phrases = {
   ...NAVBAR,
   ...GALLERY,
   ...UPLOAD,
-  ...FORM
+  ...FORM,
+  ...NOT_FOUND
 };
 
 export default phrases;
