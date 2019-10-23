@@ -50,7 +50,15 @@ const FORM = {
 const NOT_FOUND = {
   'NotFound.title': '¡Ups, página no encontrada!',
   'NotFound.description': 'La página que intentó acceder no existe.',
-  'NotFound.link': 'Ir a la página principal'
+  'NotFound.link': 'Ir a inicio'
+};
+
+const SITE = {
+  'Site.title.prefix': 'Arte en Guápulo',
+  'Site.title.notFound': '¡Página no Encontrada!',
+  'Site.title.home': 'Inicio',
+  'Site.title.gallery': 'Galería',
+  'Site.title.upload': 'Subida de Datos'
 };
 
 const phrases = {
@@ -58,7 +66,8 @@ const phrases = {
   ...GALLERY,
   ...UPLOAD,
   ...FORM,
-  ...NOT_FOUND
+  ...NOT_FOUND,
+  ...SITE
 };
 
 export default phrases;

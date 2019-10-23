@@ -9,6 +9,7 @@ import { Geolocation, AuthorForm, TagsForm } from '../common/form';
 import Text from '../common/text';
 import Actions from '../../redux/actions';
 import { ENTER_ASCII_CODE, UPLOAD_DONE_TIMEOUT, UPLOAD_IMAGE_TIMEOUT } from '../../constants';
+import { updatePageTitle } from '../../utils';
 
 const { postPiece, clearDone } = Actions;
 
@@ -36,6 +37,19 @@ class Upload extends Component {
       }
     }
     return null;
+  }
+
+  componentDidMount() {
+    updatePageTitle('Site.title.upload');
+  }
+
+  componentDidUpdate(prevProps) {
+    const { app: { locale: oldLocale } } = prevProps;
+    const { app: { locale: newLocale } } = this.props;
+
+    if (oldLocale !== newLocale) {
+      updatePageTitle('Site.title.upload');
+    }
   }
 
   constructor(props) {
@@ -389,6 +403,7 @@ class Upload extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    app: state.app,
     upload: state.upload
   };
 };
