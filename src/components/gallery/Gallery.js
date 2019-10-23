@@ -4,12 +4,23 @@ import Actions from '../../redux/actions'
 import { CardColumns } from 'react-bootstrap';
 import ImageCard from  '../common/imageCard';
 import GalleryMessages from './GalleryMessages';
+import { updatePageTitle } from '../../utils';
 
 const { getGallery } = Actions;
 
 class Gallery extends Component {
   componentDidMount() {
+    updatePageTitle('Site.title.gallery');
     this.props.getGallery();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { app: { locale: oldLocale } } = prevProps;
+    const { app: { locale: newLocale } } = this.props;
+
+    if (oldLocale !== newLocale) {
+      updatePageTitle('Site.title.gallery');
+    }
   }
 
   render() {
@@ -39,6 +50,7 @@ class Gallery extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    app: state.app,
     gallery: state.gallery
   };
 };

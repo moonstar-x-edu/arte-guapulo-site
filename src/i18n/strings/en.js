@@ -53,12 +53,21 @@ const NOT_FOUND = {
   'NotFound.link': 'Go to Home'
 };
 
+const SITE = {
+  'Site.title.prefix': 'Art in Guápulo',
+  'Site.title.notFound': 'Not Found!',
+  'Site.title.home': 'Home',
+  'Site.title.gallery': 'Gallery',
+  'Site.title.upload': 'Data Upload'
+};
+
 const phrases = {
   ...NAVBAR,
   ...GALLERY,
   ...UPLOAD,
   ...FORM,
-  ...NOT_FOUND
+  ...NOT_FOUND,
+  ...SITE
 };
 
 export default phrases;

@@ -1,11 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updatePageTitle } from '../../utils';
 
-const Home = () => {
-  return (
-    <div>
-      HOME!
-    </div>
-  );
+class Home extends Component {
+  componentDidMount() {
+    updatePageTitle('Site.title.home');
+  }
+
+  componentDidUpdate(prevProps) {
+    const { app: { locale: oldLocale } } = prevProps;
+    const { app: { locale: newLocale } } = this.props;
+
+    if (oldLocale !== newLocale) {
+      updatePageTitle('Site.title.home');
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        HOME!
+      </div>
+    );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    app: state.app
+  };
 };
 
-export default Home;
+export default connect(mapStateToProps)(Home);
