@@ -27,7 +27,7 @@ class Gallery extends Component {
     const { loading, error, data } = this.props.gallery;
 
     return (
-      <div>
+      <div className="gallery">
         <GalleryMessages loading={loading} error={error} dataSize={data.length} />
         <CardColumns>
           {

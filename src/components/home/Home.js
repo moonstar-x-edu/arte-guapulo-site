@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import TagSearch from '../common/tagSearch';
 import { updatePageTitle } from '../../utils';
 
 class Home extends Component {
@@ -20,6 +21,7 @@ class Home extends Component {
     return (
       <div>
         HOME!
+        <TagSearch />
       </div>
     );
   }
