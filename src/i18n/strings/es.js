@@ -19,7 +19,11 @@ const GALLERY = {
   'Gallery.error.heading': '¡Ups! Algo sucedió al tratar de descargar la galería...',
   'Gallery.error.message': 'Hubo un error al descargar la información de las piezas de la galería. Si ve este mensaje, contacte al administrador de la página.',
   'Gallery.warning.heading': '¡No hay piezas de galería para mostrar!',
-  'Gallery.warning.message': 'No hay piezas de galería que mostrar. Si ve este mensaje, contacte al administrador de la página.'
+  'Gallery.warning.message': 'No hay piezas de galería que mostrar. Si ve este mensaje, contacte al administrador de la página.',
+  'Gallery.filters.info.message': 'Ninguna pieza cumple con los filtros actuales.',
+  'Gallery.filters.search.placeholder': 'Filtrar por tags...',
+  'Gallery.filters.search.add': 'Agregar filtro',
+  'Gallery.filters.search.reset': 'Reiniciar filtros'
 };
 
 const UPLOAD = {
