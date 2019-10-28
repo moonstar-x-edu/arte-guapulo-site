@@ -1,7 +1,14 @@
 import ActionTypes from './actionTypes';
 import { getGalleryRequest } from '../../networking';
 
-const { GET_GALLERY_SUCCESS, GET_GALLERY_FAILURE, GET_GALLERY_STARTED } = ActionTypes;
+const {
+  GET_GALLERY_SUCCESS,
+  GET_GALLERY_FAILURE,
+  GET_GALLERY_STARTED,
+  FILTER_ADD,
+  FILTER_REMOVE,
+  FILTER_RESET
+} = ActionTypes;
 
 const getGalleryStarted = () => {
   return {
@@ -36,6 +43,29 @@ const getGallery = () => {
   };
 };
 
+const addFilter = (filter) => {
+  return {
+    type: FILTER_ADD,
+    payload: filter
+  };
+};
+
+const removeFilter = (index) => {
+  return {
+    type: FILTER_REMOVE,
+    payload: index
+  };
+};
+
+const filterReset = () => {
+  return {
+    type: FILTER_RESET
+  };
+};
+
 export {
-  getGallery
+  getGallery,
+  addFilter,
+  removeFilter,
+  filterReset
 };

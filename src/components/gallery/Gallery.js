@@ -7,11 +7,12 @@ import GalleryMessages from './GalleryMessages';
 import TagSearch from '../common/tagSearch';
 import { updatePageTitle } from '../../utils';
 
-const { getGallery } = Actions;
+const { getGallery, filterReset } = Actions;
 
 class Gallery extends Component {
   componentDidMount() {
     updatePageTitle('Site.title.gallery');
+    this.props.filterReset();
     this.props.getGallery();
   }
 
@@ -24,38 +25,8 @@ class Gallery extends Component {
     }
   }
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      filters: []
-    };
-
-    this.handleTagAdd = this.handleTagAdd.bind(this);
-    this.handleTagRemove = this.handleTagRemove.bind(this);
-  }
-
-  handleTagAdd(value) {
-    const { filters } = this.state;
-    const newFilters = [...filters, value];
-
-    this.setState({
-      filters: newFilters
-    });
-  }
-
-  handleTagRemove(index) {
-    const { filters } = this.state;
-    const newFilters = [...filters.slice(0, index), ...filters.slice(index + 1)];
-
-    this.setState({
-      filters: newFilters
-    });
-  }
-
   getFilteredData() {
-    const { data } = this.props.gallery;
-    const { filters } = this.state;
+    const { data, filters } = this.props.gallery;
 
     return filters.length > 0
       ? data.filter((piece) => {
@@ -67,8 +38,7 @@ class Gallery extends Component {
   }
 
   render() {
-    const { loading, error } = this.props.gallery;
-    const { filters } = this.state;
+    const { loading, error, filters } = this.props.gallery;
 
     const data = this.getFilteredData();
     const dataSize = data.length;
@@ -76,8 +46,8 @@ class Gallery extends Component {
     return (
       <div className="gallery">
         {
-          dataSize > 0 &&
-            <TagSearch filters={filters} onAdd={this.handleTagAdd} onRemove={this.handleTagRemove} />
+          (!loading && !error) &&
+            <TagSearch />
         }
         <GalleryMessages loading={loading} error={error} dataSize={dataSize} filtersSize={filters.length} />
         <CardColumns>
@@ -106,4 +76,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getGallery })(Gallery);
+export default connect(mapStateToProps, { getGallery, filterReset })(Gallery);

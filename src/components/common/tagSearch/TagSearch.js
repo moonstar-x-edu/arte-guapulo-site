@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Actions from '../../../redux/actions';
 import { InputGroup, FormControl, Button } from 'react-bootstrap';
 import TagsForm from '../form/tagsForm';
 import { ENTER_ASCII_CODE } from '../../../constants';
+
+const { addFilter, removeFilter } = Actions;
 
 class TagSearch extends Component {
   constructor(props) {
@@ -26,7 +30,7 @@ class TagSearch extends Component {
   }
 
   handleAdd() {
-    const { filters, onAdd } = this.props;
+    const { addFilter, gallery: { filters } } = this.props;
     const { input } = this.state;
 
     if (filters.includes(input)) {
@@ -35,7 +39,7 @@ class TagSearch extends Component {
       });
     }
 
-    onAdd(input);
+    addFilter(input);
     this.setState({
       input: ''
     });
@@ -54,7 +58,7 @@ class TagSearch extends Component {
   }
 
   render() {
-    const { className, filters } = this.props;
+    const { className, gallery: { filters }, removeFilter } = this.props;
     const { input, error } = this.state;
 
     return (
@@ -75,7 +79,7 @@ class TagSearch extends Component {
             onKeyPress={this.handleEnter}
           />
         </InputGroup>
-        <TagsForm tags={filters} onRemove={this.props.onRemove} />
+        <TagsForm tags={filters} onRemove={removeFilter} />
         <Button className="tag-search-button" onClick={this.handleButtonClick}>
           Add Filter!
         </Button>
@@ -85,15 +89,17 @@ class TagSearch extends Component {
 }
 
 TagSearch.propTypes = {
-  className: PropTypes.string,
-  filters: PropTypes.arrayOf(PropTypes.string),
-  onAdd: PropTypes.func.isRequired,
-  onRemove: PropTypes.func.isRequired
+  className: PropTypes.string
 };
 
 TagSearch.defaultProps = {
-  className: '',
-  filters: []
+  className: ''
 };
 
-export default TagSearch;
+const mapStateToProps = (state) => {
+  return {
+    gallery: state.gallery
+  };
+};
+
+export default connect(mapStateToProps, { addFilter, removeFilter })(TagSearch);
