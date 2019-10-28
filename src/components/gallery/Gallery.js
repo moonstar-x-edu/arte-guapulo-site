@@ -4,6 +4,7 @@ import Actions from '../../redux/actions'
 import { CardColumns } from 'react-bootstrap';
 import ImageCard from  '../common/imageCard';
 import GalleryMessages from './GalleryMessages';
+import TagSearch from '../common/tagSearch';
 import { updatePageTitle } from '../../utils';
 
 const { getGallery } = Actions;
@@ -23,22 +24,68 @@ class Gallery extends Component {
     }
   }
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      filters: []
+    };
+
+    this.handleTagAdd = this.handleTagAdd.bind(this);
+    this.handleTagRemove = this.handleTagRemove.bind(this);
+  }
+
+  handleTagAdd(value) {
+    const { filters } = this.state;
+    const newFilters = [...filters, value];
+
+    this.setState({
+      filters: newFilters
+    });
+  }
+
+  handleTagRemove(index) {
+    const { filters } = this.state;
+    const newFilters = [...filters.slice(0, index), ...filters.slice(index + 1)];
+
+    this.setState({
+      filters: newFilters
+    });
+  }
+
+  getFilteredData() {
+    const { data } = this.props.gallery;
+    const { filters } = this.state;
+
+    return filters.length > 0
+      ? data.filter((piece) => {
+        return filters.every((filter) => {
+          return piece.tags.includes(filter);
+        });
+      })
+      : data;
+  }
+
   render() {
-    const { loading, error, data } = this.props.gallery;
+    const { loading, error } = this.props.gallery;
+    const { filters } = this.state;
+
+    const data = this.getFilteredData();
 
     return (
       <div className="gallery">
+        <TagSearch filters={filters} onAdd={this.handleTagAdd} onRemove={this.handleTagRemove} />
         <GalleryMessages loading={loading} error={error} dataSize={data.length} />
         <CardColumns>
           {
-            data.map((dataObject) => (
+            data.map((piece) => (
               <ImageCard
-                key={dataObject.id}
-                piece={dataObject.id}
-                imageURL={dataObject.image}
-                authors={dataObject.authors}
-                coordinates={dataObject.coordinates}
-                tags={dataObject.tags}
+                key={piece.id}
+                piece={piece.id}
+                imageURL={piece.image}
+                authors={piece.authors}
+                coordinates={piece.coordinates}
+                tags={piece.tags}
               />
             ))
           }

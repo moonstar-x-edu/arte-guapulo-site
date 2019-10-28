@@ -9,44 +9,40 @@ class TagSearch extends Component {
     super(props);
 
     this.state = {
-      filters: [],
-      input: ''
+      input: '',
+      error: false
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleTagRemove = this.handleTagRemove.bind(this);
-    this.handleTagAdd = this.handleTagAdd.bind(this);
     this.handleButtonClick = this.handleButtonClick.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
   }
 
   handleInputChange(event) {
     this.setState({
-      input: event.target.value
+      input: event.target.value,
+      error: false
     });
   }
 
-  handleTagRemove(index) {
-    const { filters } = this.state;
-    const newFilters = [...filters.slice(0, index), ...filters.slice(index + 1)];
+  handleAdd() {
+    const { filters, onAdd } = this.props;
+    const { input } = this.state;
 
+    if (filters.includes(input)) {
+      return this.setState({
+        error: true
+      });
+    }
+
+    onAdd(input);
     this.setState({
-      filters: newFilters
-    });
-  }
-
-  handleTagAdd() {
-    const { filters, input } = this.state;
-    const newFilters = [...filters, input];
-
-    this.setState({
-      filters: newFilters,
       input: ''
     });
   }
 
   handleButtonClick() {
-    this.handleTagAdd();
+    this.handleAdd();
   }
 
   handleEnter(event) {
@@ -54,15 +50,15 @@ class TagSearch extends Component {
       return;
     }
 
-    this.handleTagAdd();
+    this.handleAdd();
   }
 
   render() {
-    const { className } = this.props;
-    const { filters, input } = this.state;
+    const { className, filters } = this.props;
+    const { input, error } = this.state;
 
     return (
-      <div className={`tag-search form ${className}`}>
+      <div className={`tag-search form mb-3 ${className}`}>
         <InputGroup className="mb-3">
           <InputGroup.Prepend>
             <InputGroup.Text id="tag-search">
@@ -74,11 +70,12 @@ class TagSearch extends Component {
             aria-label="Tag Search"
             aria-describedby="tag-search"
             value={input}
+            isInvalid={error}
             onChange={this.handleInputChange}
             onKeyPress={this.handleEnter}
           />
         </InputGroup>
-        <TagsForm tags={filters} onRemove={this.handleTagRemove} />
+        <TagsForm tags={filters} onRemove={this.props.onRemove} />
         <Button className="tag-search-button" onClick={this.handleButtonClick}>
           Add Filter!
         </Button>
@@ -88,11 +85,15 @@ class TagSearch extends Component {
 }
 
 TagSearch.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  filters: PropTypes.arrayOf(PropTypes.string),
+  onAdd: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired
 };
 
 TagSearch.defaultProps = {
-  className: ''
+  className: '',
+  filters: []
 };
 
 export default TagSearch;
