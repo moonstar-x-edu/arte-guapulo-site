@@ -1,27 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Actions from '../../../redux/actions';
 import { Card } from 'react-bootstrap';
 import { AuthorsList } from '../authors';
 import TagChips from '../tagChips';
 import Text from '../text';
 import MapButton from '../mapButton';
 
-const ImageOverlay = ({ visible, piece, authors, tags, onShowModal }) => {
-  return visible ? (
-    <Card.ImgOverlay className="card-overlay">
-      <Card.Body>
-        <Card.Title>
-          <Text phrase="Gallery.card.title" />
-        </Card.Title>
+const { addFilter } = Actions;
 
-        <AuthorsList piece={piece} authors={authors} />
-        <MapButton onClick={onShowModal} />
-        <TagChips tags={tags} />
+class ImageOverlay extends Component {
+  constructor(props) {
+    super(props);
 
-      </Card.Body>
-    </Card.ImgOverlay>
-  ) : null;
-};
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(tag) {
+    const { addFilter, gallery: { filters } } = this.props;
+
+    if (filters.includes(tag)) {
+      return;
+    }
+
+    addFilter(tag);
+  }
+
+  render() {
+    const { visible, piece, authors, tags, onShowModal } = this.props;
+
+    return visible ? (
+      <Card.ImgOverlay className="card-overlay">
+        <Card.Body>
+          <Card.Title>
+            <Text phrase="Gallery.card.title" />
+          </Card.Title>
+
+          <AuthorsList piece={piece} authors={authors} />
+          <MapButton onClick={onShowModal} />
+          <TagChips tags={tags} onClick={this.handleClick} />
+
+        </Card.Body>
+      </Card.ImgOverlay>
+    ) : null;
+  }
+}
 
 ImageOverlay.propTypes = {
   visible: PropTypes.bool.isRequired,
@@ -40,4 +64,10 @@ ImageOverlay.propTypes = {
   onShowModal: PropTypes.func.isRequired
 };
 
-export default ImageOverlay;
+const mapStateToProps = (state) => {
+  return {
+    gallery: state.gallery
+  };
+};
+
+export default connect(mapStateToProps, { addFilter })(ImageOverlay);

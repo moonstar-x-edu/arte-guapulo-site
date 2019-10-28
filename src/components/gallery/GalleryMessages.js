@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LoadingSpinner from '../common/loadingSpinner';
-import { ErrorBox, WarningBox } from '../common/alertBox';
+import { ErrorBox, WarningBox, InfoBox } from '../common/alertBox';
 
-const GalleryMessages = ({ loading, error, dataSize }) => {
+const GalleryMessages = ({ loading, error, dataSize, filtersSize }) => {
   if (loading) {
     return (
       <LoadingSpinner loading={loading} phrase="Gallery.loading" />
@@ -21,9 +21,15 @@ const GalleryMessages = ({ loading, error, dataSize }) => {
   }
 
   if (dataSize < 1) {
+    if (filtersSize < 1) {
+      return (
+        <WarningBox heading="Gallery.warning.heading" content="Gallery.warning.message" />
+      );
+    }
+
     return (
-      <WarningBox heading="Gallery.warning.heading" content="Gallery.warning.message" />
-    );
+      <InfoBox content="Gallery.filters.info.message" />
+    )
   }
 
   return null;
@@ -32,7 +38,8 @@ const GalleryMessages = ({ loading, error, dataSize }) => {
 GalleryMessages.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.string,
-  dataSize: PropTypes.number
+  dataSize: PropTypes.number,
+  filtersSize: PropTypes.number
 };
 
 export default GalleryMessages;

@@ -4,13 +4,15 @@ import Actions from '../../redux/actions'
 import { CardColumns } from 'react-bootstrap';
 import ImageCard from  '../common/imageCard';
 import GalleryMessages from './GalleryMessages';
+import TagSearch from '../common/tagSearch';
 import { updatePageTitle } from '../../utils';
 
-const { getGallery } = Actions;
+const { getGallery, filterReset } = Actions;
 
 class Gallery extends Component {
   componentDidMount() {
     updatePageTitle('Site.title.gallery');
+    this.props.filterReset();
     this.props.getGallery();
   }
 
@@ -23,22 +25,41 @@ class Gallery extends Component {
     }
   }
 
+  getFilteredData() {
+    const { data, filters } = this.props.gallery;
+
+    return filters.length > 0
+      ? data.filter((piece) => {
+        return filters.every((filter) => {
+          return piece.tags.includes(filter);
+        });
+      })
+      : data;
+  }
+
   render() {
-    const { loading, error, data } = this.props.gallery;
+    const { loading, error, filters } = this.props.gallery;
+
+    const data = this.getFilteredData();
+    const dataSize = data.length;
 
     return (
-      <div>
-        <GalleryMessages loading={loading} error={error} dataSize={data.length} />
+      <div className="gallery">
+        {
+          (!loading && !error) &&
+            <TagSearch />
+        }
+        <GalleryMessages loading={loading} error={error} dataSize={dataSize} filtersSize={filters.length} />
         <CardColumns>
           {
-            data.map((dataObject) => (
+            data.map((piece) => (
               <ImageCard
-                key={dataObject.id}
-                piece={dataObject.id}
-                imageURL={dataObject.image}
-                authors={dataObject.authors}
-                coordinates={dataObject.coordinates}
-                tags={dataObject.tags}
+                key={piece.id}
+                piece={piece.id}
+                imageURL={piece.image}
+                authors={piece.authors}
+                coordinates={piece.coordinates}
+                tags={piece.tags}
               />
             ))
           }
@@ -55,4 +76,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getGallery })(Gallery);
+export default connect(mapStateToProps, { getGallery, filterReset })(Gallery);
