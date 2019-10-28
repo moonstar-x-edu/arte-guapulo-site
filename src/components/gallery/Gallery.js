@@ -71,11 +71,15 @@ class Gallery extends Component {
     const { filters } = this.state;
 
     const data = this.getFilteredData();
+    const dataSize = data.length;
 
     return (
       <div className="gallery">
-        <TagSearch filters={filters} onAdd={this.handleTagAdd} onRemove={this.handleTagRemove} />
-        <GalleryMessages loading={loading} error={error} dataSize={data.length} />
+        {
+          dataSize > 0 &&
+            <TagSearch filters={filters} onAdd={this.handleTagAdd} onRemove={this.handleTagRemove} />
+        }
+        <GalleryMessages loading={loading} error={error} dataSize={dataSize} filtersSize={filters.length} />
         <CardColumns>
           {
             data.map((piece) => (
