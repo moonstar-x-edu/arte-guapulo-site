@@ -22,7 +22,8 @@ const GALLERY = {
   'Gallery.warning.message': 'No gallery pieces are available to show. If you see this message, contact the website administrator.',
   'Gallery.filters.info.message': 'No gallery pieces meet your currently set filters.',
   'Gallery.filters.search.placeholder': 'Filter by tags...',
-  'Gallery.filters.search.button': 'Add Filter'
+  'Gallery.filters.search.add': 'Add filter',
+  'Gallery.filters.search.reset': 'Reset filters'
 };
 
 const UPLOAD = {

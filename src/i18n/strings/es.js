@@ -22,7 +22,8 @@ const GALLERY = {
   'Gallery.warning.message': 'No hay piezas de galería que mostrar. Si ve este mensaje, contacte al administrador de la página.',
   'Gallery.filters.info.message': 'Ninguna pieza cumple con los filtros actuales.',
   'Gallery.filters.search.placeholder': 'Filtrar por tags...',
-  'Gallery.filters.search.button': 'Agregar Filtro'
+  'Gallery.filters.search.add': 'Agregar filtro',
+  'Gallery.filters.search.reset': 'Reiniciar filtros'
 };
 
 const UPLOAD = {

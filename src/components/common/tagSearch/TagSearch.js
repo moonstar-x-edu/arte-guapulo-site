@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Actions from '../../../redux/actions';
-import { InputGroup, FormControl, Button } from 'react-bootstrap';
+import { InputGroup, FormControl, Button, Col, Row } from 'react-bootstrap';
 import TagsForm from '../form/tagsForm';
 import Text from '../text';
 import { t } from '../../../i18n';
 import { ENTER_ASCII_CODE } from '../../../constants';
 
-const { addFilter, removeFilter } = Actions;
+const { addFilter, removeFilter, filterReset } = Actions;
 
 class TagSearch extends Component {
   constructor(props) {
@@ -60,7 +60,7 @@ class TagSearch extends Component {
   }
 
   render() {
-    const { className, gallery: { filters }, removeFilter } = this.props;
+    const { className, gallery: { filters }, removeFilter, filterReset } = this.props;
     const { input, error } = this.state;
 
     return (
@@ -82,9 +82,18 @@ class TagSearch extends Component {
           />
         </InputGroup>
         <TagsForm tags={filters} onRemove={removeFilter} />
-        <Button className="tag-search-button" onClick={this.handleButtonClick}>
-          <Text phrase="Gallery.filters.search.button" />
-        </Button>
+        <Row className="tag-search-buttons">
+          <Col sm={12} md={{ span: 3, offset: 6 }} className="tag-search-button-col">
+            <Button className="tag-search-button" onClick={filterReset}>
+              <Text phrase="Gallery.filters.search.reset" />
+            </Button>
+          </Col>
+          <Col sm={12} md={3} className="tag-search-button-col">
+            <Button className="tag-search-button" onClick={this.handleButtonClick}>
+              <Text phrase="Gallery.filters.search.add" />
+            </Button>
+          </Col>
+        </Row>
       </div>
     );
   }
@@ -105,4 +114,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { addFilter, removeFilter })(TagSearch);
+export default connect(mapStateToProps, { addFilter, removeFilter, filterReset })(TagSearch);

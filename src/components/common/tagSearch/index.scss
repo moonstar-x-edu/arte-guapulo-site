@@ -1,16 +1,26 @@
 .tag-search {
+  $buttons-horizontal-margin: 0.5em;
+  $buttons-vertical-margin: 0.25em;
+
   background-color: $white;
   padding: 1.5rem 2rem;
   border-radius: 10px;
 
-  .tag-search-button {
-    display: block;
-    margin-left: auto;
-    background-color: $light-blue;
-    border: none;
+  .tag-search-buttons {
+    margin: $buttons-vertical-margin -#{$buttons-horizontal-margin};
 
-    &:hover, &:active, &:focus {
-      background-color: $dark-blue !important;
+    .tag-search-button-col {
+      padding: $buttons-vertical-margin $buttons-horizontal-margin;
+
+      .tag-search-button {
+        width: 100%;
+        background-color: $light-blue;
+        border: none;
+
+        &:hover, &:active, &:focus {
+          background-color: $dark-blue !important;
+        }
+      }
     }
   }
 }
