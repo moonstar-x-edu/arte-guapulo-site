@@ -20,7 +20,9 @@ const GALLERY = {
   'Gallery.error.message': 'Hubo un error al descargar la información de las piezas de la galería. Si ve este mensaje, contacte al administrador de la página.',
   'Gallery.warning.heading': '¡No hay piezas de galería para mostrar!',
   'Gallery.warning.message': 'No hay piezas de galería que mostrar. Si ve este mensaje, contacte al administrador de la página.',
-  'Gallery.filters.info.message': 'Ninguna pieza cumple con los filtros actuales.'
+  'Gallery.filters.info.message': 'Ninguna pieza cumple con los filtros actuales.',
+  'Gallery.filters.search.placeholder': 'Filtrar por tags...',
+  'Gallery.filters.search.button': 'Agregar Filtro'
 };
 
 const UPLOAD = {

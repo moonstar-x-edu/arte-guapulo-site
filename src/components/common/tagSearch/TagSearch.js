@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Actions from '../../../redux/actions';
 import { InputGroup, FormControl, Button } from 'react-bootstrap';
 import TagsForm from '../form/tagsForm';
+import Text from '../text';
+import { t } from '../../../i18n';
 import { ENTER_ASCII_CODE } from '../../../constants';
 
 const { addFilter, removeFilter } = Actions;
@@ -70,7 +72,7 @@ class TagSearch extends Component {
             </InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
-            placeholder="Filter By Tags"
+            placeholder={t('Gallery.filters.search.placeholder')}
             aria-label="Tag Search"
             aria-describedby="tag-search"
             value={input}
@@ -81,7 +83,7 @@ class TagSearch extends Component {
         </InputGroup>
         <TagsForm tags={filters} onRemove={removeFilter} />
         <Button className="tag-search-button" onClick={this.handleButtonClick}>
-          Add Filter!
+          <Text phrase="Gallery.filters.search.button" />
         </Button>
       </div>
     );
@@ -98,6 +100,7 @@ TagSearch.defaultProps = {
 
 const mapStateToProps = (state) => {
   return {
+    app: state.app,
     gallery: state.gallery
   };
 };
