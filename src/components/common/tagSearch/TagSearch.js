@@ -33,7 +33,7 @@ class TagSearch extends Component {
     const { addFilter, gallery: { filters } } = this.props;
     const { input } = this.state;
 
-    if (filters.includes(input)) {
+    if (filters.includes(input) || !input) {
       return this.setState({
         error: true
       });

@@ -6,5 +6,11 @@
   .tag-search-button {
     display: block;
     margin-left: auto;
+    background-color: $light-blue;
+    border: none;
+
+    &:hover, &:active, &:focus {
+      background-color: $dark-blue !important;
+    }
   }
 }
