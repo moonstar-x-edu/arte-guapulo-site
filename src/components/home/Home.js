@@ -1,6 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Jumbotron } from 'react-bootstrap';
+import Carousel from '../common/carousel';
 import { updatePageTitle } from '../../utils';
+
+const options = [
+  {
+    id: 1,
+    imgURL: 'https://www.yogajournal.com/.image/t_share/MTUxMDUxNDQ2NDQyMjcyNzA5/fearless.jpg',
+    titleKey: 'Site.title.home',
+    captionKey: 'Site.title.home'
+  },
+  {
+    id: 1,
+    imgURL: 'https://www.yogajournal.com/.image/t_share/MTUxMDUxNDQ2NDQyMjcyNzA5/fearless.jpg',
+    captionKey: 'Site.title.home'
+  },
+  {
+    id: 1,
+    imgURL: 'https://www.yogajournal.com/.image/t_share/MTUxMDUxNDQ2NDQyMjcyNzA5/fearless.jpg',
+  }
+];
 
 class Home extends Component {
   componentDidMount() {
@@ -19,7 +39,11 @@ class Home extends Component {
   render() {
     return (
       <div>
-        HOME!
+        <Jumbotron>
+          <h1>Test</h1>
+          <p>Testing...</p>
+          <Carousel options={options} />
+        </Jumbotron>
       </div>
     );
   }
