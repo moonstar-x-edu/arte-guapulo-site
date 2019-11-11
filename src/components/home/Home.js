@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Jumbotron } from 'react-bootstrap';
 import Carousel from '../common/carousel';
+import Jumbotron from '../common/jumbotron';
 import { updatePageTitle } from '../../utils';
 
 const options = [
@@ -38,10 +38,8 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="home">
         <Jumbotron>
-          <h1>Test</h1>
-          <p>Testing...</p>
           <Carousel options={options} />
         </Jumbotron>
       </div>
