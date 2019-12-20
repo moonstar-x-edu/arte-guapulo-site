@@ -1,0 +1,22 @@
+.carousel {
+  $carousel-border: 8px;
+
+  width: 90vw;
+  margin: 0 auto;
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+
+  .carousel-inner {
+    border-radius: $carousel-border;
+
+    .carousel-item {
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

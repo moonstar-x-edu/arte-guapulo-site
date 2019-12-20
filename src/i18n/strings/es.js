@@ -65,13 +65,28 @@ const SITE = {
   'Site.title.upload': 'Subida de Datos'
 };
 
+const HOME = {
+  'Home.cards.description.first': 'Este sitio es un pequeño proyecto realizado para el curso de "Ser y Cosmos" de la ' +
+    'Universidad San Francisco de Quito. Este sitio pretende servir como una galería del graffiti y murales ' +
+    'encontrados en el barrio de Guápulo de Quito, Ecuador.',
+  'Home.cards.description.second': 'Ya que el barrio mencionado previamente es conocido por ser un lugar con ' +
+    'abundantes graffitis, pensé que sería una buena idea tener una manera de mostrar estas piezas de arte con su ' +
+    'respectivo autor y ubicación geográfica. Con esto en mente, decidí realizar esta página web.',
+  'Home.cards.os.first': 'Este sitio web es un proyecto de fuente abierta. Está lejos de ser perfecto pero las ' +
+    'intenciones son las que cuentan. Si deseas contribuir, puedes realizar un fork del proyecto o realizar un ' +
+    'pull request en el ',
+  'Home.cards.os.bitbucket': 'Repo de Bitbucket.',
+  'Home.cards.os.email': 'También me puedes contactar por email.'
+};
+
 const phrases = {
   ...NAVBAR,
   ...GALLERY,
   ...UPLOAD,
   ...FORM,
   ...NOT_FOUND,
-  ...SITE
+  ...SITE,
+  ...HOME
 };
 
 export default phrases;

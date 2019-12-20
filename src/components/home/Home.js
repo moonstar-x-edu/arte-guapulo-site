@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Carousel from '../common/carousel';
-import Jumbotron from '../common/jumbotron';
+import Card from '../common/card';
+import Text from '../common/text';
 import { updatePageTitle } from '../../utils';
 
 const options = [
   {
     id: 1,
-    imgURL: 'https://www.yogajournal.com/.image/t_share/MTUxMDUxNDQ2NDQyMjcyNzA5/fearless.jpg',
-    titleKey: 'Site.title.home',
-    captionKey: 'Site.title.home'
+    imgURL: '/img/carousel/guapulo_1.jpeg'
   },
   {
-    id: 1,
-    imgURL: 'https://www.yogajournal.com/.image/t_share/MTUxMDUxNDQ2NDQyMjcyNzA5/fearless.jpg',
-    captionKey: 'Site.title.home'
+    id: 2,
+    imgURL: '/img/carousel/guapulo_2.jpeg'
   },
   {
-    id: 1,
-    imgURL: 'https://www.yogajournal.com/.image/t_share/MTUxMDUxNDQ2NDQyMjcyNzA5/fearless.jpg',
+    id: 3,
+    imgURL: '/img/carousel/guapulo_3.jpeg',
   }
 ];
 
@@ -39,9 +37,32 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        <Jumbotron>
-          <Carousel options={options} />
-        </Jumbotron>
+        <Carousel options={options} />
+
+        <div className="home-content">
+          <Card bg="light" border="dark" className="home-card">
+            <p>
+              <Text phrase="Home.cards.description.first" />
+            </p>
+            <p>
+              <Text phrase="Home.cards.description.second" />
+            </p>
+          </Card>
+
+          <Card bg="light" border="dark" className="home-card">
+            <p>
+              <Text phrase="Home.cards.os.first" />
+              <a href="https://bitbucket.org/moonstar-x/arte-guapulo-site/src/master/" className="home-link">
+                <Text phrase="Home.cards.os.bitbucket" />
+              </a>
+            </p>
+            <p className="text-center">
+              <a href="mailto:clopeza@estud.usfq.edu.ec" className="home-link">
+                <Text phrase="Home.cards.os.email" />
+              </a>
+            </p>
+          </Card>
+        </div>
       </div>
     );
   }
