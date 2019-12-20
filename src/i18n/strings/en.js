@@ -65,13 +65,27 @@ const SITE = {
   'Site.title.upload': 'Data Upload'
 };
 
+const HOME = {
+  'Home.cards.description.first': 'This site is a small project done for the "Ser y Cosmos" course of the ' +
+    'Universidad San Francisco de Quito. This website pretends to serve as a gallery for the graffiti and murals ' +
+    'found in the Guápulo neighborhood of Quito, Ecuador.',
+  'Home.cards.description.second': 'Since the aforementioned neighborhood is known for being a spot of abundant ' +
+    'graffiti, I thought it would be a great idea to have a way to display these art pieces with their respective ' +
+    'author and geolocation. With this in mind, I decided to work on this website.',
+  'Home.cards.os.first': 'This website is an open source project, it is long from being perfect but the intentions ' +
+    'are there. If you wish to contribute, you can fork the project or make a pull request on the ',
+  'Home.cards.os.bitbucket': 'Bitbucket Repo.',
+  'Home.cards.os.email': 'You can also contact me by email.'
+};
+
 const phrases = {
   ...NAVBAR,
   ...GALLERY,
   ...UPLOAD,
   ...FORM,
   ...NOT_FOUND,
-  ...SITE
+  ...SITE,
+  ...HOME
 };
 
 export default phrases;
