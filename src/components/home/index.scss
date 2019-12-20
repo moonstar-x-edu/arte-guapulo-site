@@ -1,0 +1,28 @@
+.home {
+
+  .home-content {
+    margin: 2rem 0;
+    position: relative;
+    width: 100%;
+
+    .home-card {
+      margin: 2rem 0;
+
+      .home-link {
+        text-decoration: none;
+
+        &:link, &:focus, &:active {
+          color: $light-blue;
+        }
+
+        &:visited {
+          color: $dark-blue;
+        }
+
+        &:hover {
+          color: $navy;
+        }
+      }
+    }
+  }
+}
